@@ -1,0 +1,7 @@
+Django 
+djangorestframework 
+django-rest-auth
+django-heroku
+python-dateutil
+psycopg2-binary
+gunicorn
