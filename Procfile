@@ -1,1 +1,1 @@
-web: gunicorn droneregistry.wsgi
+web: gunicorn ohio.wsgi
