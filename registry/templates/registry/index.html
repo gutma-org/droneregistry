@@ -33,21 +33,25 @@
 
 			<section class="container" id="examples">
 				<h5 class="title">What is this? </h5>
-				<p>Welcome to the GUTMA drone registry sandbox. This site has three things: </p>
-				<p>
+				<p>Welcome to the GUTMA drone registry sandbox. This site has three things: 
 					<ul>
 						<li><a href="https://github.com/gutma-org/droneregistry/blob/master/documents/registration-white-paper.md" title="Whitepaper">Registry Landscape Whitepaper</a></li>	
-						<li>Interoperatble API Specification, the technical specification for a registry. You can see the API specification and explore API endpoints at <a href="https://droneregistry.herokuapp.com/api/v1/" title="Getting Started">https://droneregistry.herokuapp.com/api/v1/</a></li>
-						<li>A working API with all endpoints and sample data for you to explore.</li>
+						<li>Interoperatble API Specification, the technical specification for a registry. You can see the API specification and explore API endpoints by reviewing <a href="https://droneregistry.herokuapp.com/api/v1/" title="Getting Started">API Blueprint</a></li>
+						<li>A working API with all endpoints and sample data for you to explore, more below.</li>
 					</ul>
 				</p>
-			</section>
-
-			<section class="container" id="examples">
 				<h5 class="title">Sandbox Data</h5>
 				<p>The sandbox registry is populated by dummy / test data, take a look at it <a href="https://github.com/gutma-org/droneregistry/blob/master/registry/defaultregistrydata.json">here</a>. You can create a JSON file with you own data to test out the different functions.</p>
-				<p>
-				</p>
+				
+				<h5 class="title">Implemented Endpoints</h5>
+					<p>Explore the implemented endpoints using the sandbox data by clicking on links below: </p>
+					<ul>
+						<li><a href="/api/v1/operators">/api/v1/operators - Operator List</a></li>
+						<li><a href="/api/v1/contacts">/api/v1/contacts - Contact List</a></li>
+						<li><a href="/api/v1/operators/41174c3f-e86c-4e5a-a629-32d4d9da6011">/api/v1/operator/{operatorid} - Details about a single operator</a></li>
+						<li><a href="/api/v1/operators/41174c3f-e86c-4e5a-a629-32d4d9da6011/privilaged">/api/v1/operator/{operatorid}/privialged - Privilaged details about a single operator</a></li>
+					</ul>
+					To review a full list of calls, please review the blueprint specifications. 
 			</section>
 
 			<section class="container" id="contributing">
