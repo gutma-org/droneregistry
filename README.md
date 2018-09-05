@@ -2,14 +2,14 @@
 
 This is a GUTMA sandbox for working on a interoperable drone registry. It has three main things, you can start in the order below: 
 
-1. Registry Landscape Whitepaper
+1. [Registry Landscape Whitepaper]()
 2. Interoperatble API Specification, the technical specification for a registry. You can see the API specification and explore API endpoints at [https://droneregistry.herokuapp.com](https://droneregistry.herokuapp.com) 
 3. A working API with all endpoints and sample data for you to explore [https://droneregistry.herokuapp.com/api/v1/](https://droneregistry.herokuapp.com/api/v1/)
 
 
 ## Contribute
 
-You can open issues to this repository, review the Landscape document to review the background and look at open issues for  
+You can open issues to this repository, review the Landscape document to review the background and look at open issues to look at the current work in progress. 
 
 ## Technical Details  / Self-install
 

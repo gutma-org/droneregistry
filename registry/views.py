@@ -198,4 +198,7 @@ class ContactDetailPrivilaged(mixins.RetrieveModelMixin,
 
 
 class HomeView(TemplateView):
+    template_name ='registry/index.html'
+
+class APIView(TemplateView):
     template_name ='registry/api.html'

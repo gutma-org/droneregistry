@@ -1,0 +1,616 @@
+FORMAT: 1A
+HOST: https://www.caa.com/api/v1
+
+# UAS Registration API
+
+This API exposes registration data and additional functionalities to enable developers and interested parties build applications and tools that utilize the data in the registry. The API is JSON-rest based and uses standard HTTP response codes to indicate API errors and successes.
+
+#### Token Authentication
+The registration data is exposed via a OAUTH token that is linked to a user account on the system. To generate a OAUTH token and credentials you must first create a account and follow instructions at the [Token Generation page](https://www.caa.com/accounts/token/) on our website. If your account is for specific law enforcement bodies or regulatory bodies, you will be required to request privilaged access, you can get your tokens by filling out the form here [Privilaged Access request](https://www.caa.com/accounts/token/) 
+
+
+#### Access
+This API supports only **https://** connections via the API. ``http://`` connections will be given a automatic HTTP 301 response.
+
+
+#### Pagination
+API responses are paginated. The default page size is 20; you can alter this by adding the ``page_size`` parameter to your request.
+
+
+#### Limits
+The API system throttles reqests to 1000 per hour for a particular token after which it will deny repeated requests for 30 minutes. If you require unthrottled access, please contact us using the [Special Access request](https://www.caa.com/accounts/privilaged/) 
+
+
+#### Response Codes
+The API uses standard HTTP response codes to communicate the status of the request. In general, 2xx codes signify success and 4xx codes signify failure, and these codes are generally associated with an invalid parameter being provided in the request. A 5xx code is a general server failure on our side. Please contact our support team if you encounter 5xx errors. Please refer to the Wikipedia page on [HTTP request codes](https://www.wikipedia.org/HTTP_Respose_Codes/) for more information 
+
+## Group Operator API
+Resources related to Operator Registration in the API
+
+## Add a new Operator [/operators/add/]
+
+### Add new operator [POST]
+Adds a entry in the operator database
+
++ Request (application/json)
+    + Headers
+
+            Authorization: Token ABC123
+            
+    + Body
+
+            {
+              "company_name": "Aalto-korkeakoulusäätiö",
+              "website": "aalto.fi",
+              "email": "mikko.raskinen@aalto.fi", 
+              "telephone": "0505270032", 
+              "address": "Otakaari 24", 
+              "postcode": "02150", 
+              "city": "espoo",
+              "type":"open",
+              "contact_name":"John Smith",
+              "operational_authorizations": ["SORA"],
+              "authorized_applications": ["Photographing, videotaping","Press, media","Inspection of buildings or roofs","Inspection of other constructions, e.g. bridges","Measurement of mobile phone networks or other telecommunication networks","RPAS flight training"],
+            }
+
+    + Schema
+
+            {
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "type": "object",
+              "properties": {
+                "company_name": {
+                  "type": "string"
+                },
+                "website": {
+                  "type": "string"
+                },
+                "telephone": {
+                  "type": "number"
+                },
+                "postcode": {
+                  "type": "number"
+                },
+                "address": {
+                  "type": "string"
+                },
+                "city": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "contact_name": {
+                  "type": "string"
+                },
+                "operational_authorizations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                },
+                "authorized_applications": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              }
+            }
+            
++ Response 200 (application/json)
+
+            {
+              "id": "4f140e59-98c3-4bc2-bf30-eec982c132ad",
+              "company_name": "Aalto-korkeakoulusäätiö",
+              "website": "aalto.fi",
+              "email": "mikko.raskinen@aalto.fi", 
+              "telephone": "0505270032", 
+              "address": "Otakaari 24", 
+              "postcode": "02150", 
+              "city": "espoo",
+              "operator_type":"open",
+              "contact_name":"John Smith",
+              "contact_id":"9921-181-987", 
+              "operational_authorizations": ["SORA"],
+              "authorized_applications": ["Photographing, videotaping","Press, media","Inspection of buildings or roofs","Inspection of other constructions, e.g. bridges","Measurement of mobile phone networks or other telecommunication networks","RPAS flight training"],
+              "created_at": "2018-03-03T18:58:10Z",
+              "updated_at": "2018-03-03T18:58:10Z"
+            }
+              
+
+
+## All Operators [/operators/]
+
+### List all operators [GET]
+Returns a list of operators in the registry
+    
++ Request (application/json)
+    + Headers
+
+            Authorization: Token ABC123
+            
++ Response 200 (application/json)
+        
+        [
+          {
+            "id": "4f140e59-98c3-4bc2-bf30-eec982c132ad",
+            "companyname": "1000 feet Oy",
+            "postcode": "01370",
+            "registered": "2018-05-31",
+            "exipration": "2021-05-31",
+            "created_at": "2018-03-03T18:58:10Z",
+            "updated_at": "2018-03-03T18:58:10Z"
+          },
+          {
+            "id": "4f140e59-98c3-4bc2-bf30-eec982c132ad",
+            "companyname": "Aalto-korkeakoulusäätiö",
+            "postcode": "02150",
+            "created_at": "2018-03-03T18:58:10Z",
+            "updated_at": "2018-03-03T18:58:10Z"
+          }
+        ]
+
+
+## Single Operator Details [/operators/{operatorid}/]
+
+### Get a single operator [GET]
+Returns all the details of a single operator available in the database. The operator id is the unique ID assoicated with the operator that is in the form of a uuid.
+
++ Parameters
+    + operatorid: 4f140e59-98c3-4bc2-bf30-eec982c132ad (string) - The ID of a operator in the form of an string
+    
++ Request (application/json)
+    + Headers
+
+            Authorization: Token ABC123
+            
++ Response 200 (application/json)
+
+    + Attributes (object)
+        + id: 250FF (string, required)
+        + company_name: Aalto Korkeakoulusäätiö (string) - Registered name of the operator
+        + email: mikko.raskinen@aalto.fi (string) - email contact address of operator
+
+            A valid email address per [IETF](https://tools.ietf.org/html/rfc5322)
+            
+        + website: aalto.fi (string) - Web address of operator
+
+    + Body
+
+            {
+                "id": "4f140e59-98c3-4bc2-bf30-eec982c132ad",
+                "company_name": "Aalto-korkeakoulusäätiö",
+                "email": "mikko.raskinen@aalto.fi",
+                "website": "aalto.fi",
+                "created_at": "2011-04-10T20:09:31Z",
+                "updated_at": "2014-03-03T18:58:10Z"
+            }
+
+## Privilaged Single Operator Details [/operators/{operatorid}/privilaged/]
+
+### Get a operator (Privilaged) [GET]
+This is a privilaged request made by a interested party that has special access privilages in the registry. Returns all the details of a single operator available in the database. The operatorid is the unique ID assoicated with the operator that is in the form of a uuid. 
+
++ Parameters
+    + operatorid: 4f140e59-98c3-4bc2-bf30-eec982c132ad (string) - The ID of a operator in the form of an string
+    
++ Request (application/json)
+    + Headers
+
+            Authorization: Token ABC123
+            
++ Response 200 (application/json)
+
+    + Attributes (object)
+        + id: 250FF (string, required)
+        + company_name: Aalto Korkeakoulusäätiö (string) - Registered name of the operator
+        + email: mikko.raskinen@aalto.fi (string) - email contact address of operator
+
+            A valid email address per [IETF](https://tools.ietf.org/html/rfc5322)
+            
+        + website: aalto.fi (string) - Web address of operator
+        + address: Otakaari 24 (string) - Postal Address of the operator
+        + postcode: 02150 (number) - Postcode of the registered office of the opeartor
+
+    + Body
+
+            {
+                "id": "4f140e59-98c3-4bc2-bf30-eec982c132ad",
+                "company_name": "Aalto-korkeakoulusäätiö",
+                "website": "aalto.fi",
+                "email": "mikko.raskinen@aalto.fi",
+                "telephone": "0505270032", 
+                "address": "Otakaari 24", 
+                "postcode": "02150", 
+                "city": "espoo",
+                "registered": "2018-05-31T20:09:31Z",
+                "exipration": "2021-05-31T20:09:31Z",
+                "authorized_applications": ["Photographing, videotaping","Press, media","Inspection of buildings or roofs","Inspection of other constructions, e.g. bridges","Measurement of mobile phone networks or other telecommunication networks","RPAS flight training"]   
+            }
+
+
+## Update Existing Operator Details [/operators/update/{operatorid}/]
+
+### Update operator details [POST]
+Updates a entry in the operator database with modified details. 
+
++ Parameters
+    + operatorid: 4f140e59-98c3-4bc2-bf30-eec982c132ad (string) - The ID of a operator in the form of an string
+    
++ Request (application/json)
+    + Headers
+
+            Authorization: Token ABC123
+            
+    + Body
+
+            {
+              "city": "Helsinki"
+              "address": "P.O. Box 11000, FI-00076 AALTO"
+            }
+
+    + Schema
+
+            {
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "type": "object",
+              "properties": {
+                "company_name": {
+                  "type": "string"
+                },
+                "website": {
+                  "type": "string"
+                },
+                "telephone": {
+                  "type": "number"
+                },
+                "postcode": {
+                  "type": "number"
+                },
+                "address": {
+                  "type": "string"
+                },
+                "city": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "contact_name": {
+                  "type": "string"
+                },
+                "operational_authorizations": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                },
+                "authorized_applications": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1
+                }
+              }
+            }
+            
++ Response 200 (application/json)
+
+            {
+              "id": "4f140e59-98c3-4bc2-bf30-eec982c132ad",
+              "company_name": "Aalto-korkeakoulusäätiö",
+              "website": "aalto.fi",
+              "email": "mikko.raskinen@aalto.fi", 
+              "telephone": "0505270032", 
+              "address": "P.O. Box 11000, FI-00076 AALTO", 
+              "postcode": "02150", 
+              "city": "Helsinki",
+              "operator_type":"open",
+              "contact_name":"John Smith",
+              "contact_id":"9921-181-987", 
+              "operational_authorizations": ["SORA"],
+              "authorized_applications": ["Photographing, videotaping","Press, media","Inspection of buildings or roofs","Inspection of other constructions, e.g. bridges","Measurement of mobile phone networks or other telecommunication networks","RPAS flight training"],
+            }
+              
+
+## Group Contact API
+Resources related to Contacts with in the Registration in the API
+
+
+## All Contacts [/contacts/]
+
+### List all contacts [GET]
+Returns a list of contact people in the registry
+    
++ Request (application/json)
+    + Headers
+
+            Authorization: Token ABC123
+            
++ Response 200 (application/json)
+        
+        [
+          {
+            "id": "4f140e59-98c3-4bc2-bf30-eec982c132ad",
+            "company_name": "1000 feet Oy",
+            "contact_name":"John Smith",
+            "operator_id" "4f140e59-98c3-4bc2-bf30-eec982c132ad",
+            "created_at": "2018-03-03T18:58:10Z",
+            "updated_at": "2018-03-03T18:58:10Z"
+          },
+          {
+            "id": "4f140e59-98c3-4bc2-bf30-eec982c132ad",
+            "company_name": "Aalto-korkeakoulusäätiö",
+            "postcode": "02150",
+            "created_at": "2018-03-03T18:58:10Z",
+            "updated_at": "2018-03-03T18:58:10Z"
+          }
+        ]
+
+
+
+## Single Contact Details [/contacts/{contactid}/]
+
+### Get a single contact [GET]
+Returns all the details of a single contact and basic information about the contact person available in the database. The conact id is the unique ID assoicated with a contact person for the operator that is in the form of a uuid.
+
++ Parameters
+    + contactid: 4f140e59-98c3-4bc2-bf30-eec982c132ad (string) - The ID of a contact person for a operator in the form of an string
+    
++ Request (application/json)
+    + Headers
+
+            Authorization: Token ABC123
+            
++ Response 200 (application/json)
+
+    + Attributes (object)
+        + id: 250FF (string, required)
+        + company_name: Aalto Korkeakoulusäätiö (string) - Registered name of the operator
+        + contact_name: Aalto Korkeakoulusäätiö (string) - Name of the contact person in the operator
+        + email: mikko.raskinen@aalto.fi (string) - email contact address of operator
+
+            A valid email address per [IETF](https://tools.ietf.org/html/rfc5322)
+            
+        + website: aalto.fi (string) - Web address of operator
+
+    + Body
+
+            {
+                "id": "4f140e59-98c3-4bc2-bf30-eec982c132ad",
+                "company_name": "Aalto-korkeakoulusäätiö",
+                "email": "mikko.raskinen@aalto.fi",
+                "contact_name":"John Smith",
+                "website": "aalto.fi",
+                "created_at": "2011-04-10T20:09:31Z",
+                "updated_at": "2014-03-03T18:58:10Z"
+            }
+    
+
+
+## Update Existing Contact Details [/contacts/update/{contactid}/]
+
+### Update contact details [POST]
+Updates a contact point entry in the operator database with modified details. 
+
++ Parameters
+    + contactid: 4f140e59-98c3-4bc2-bf30-eec982c132ad (string) - The ID of a operator in the form of an string
+    
++ Request (application/json)
+    + Headers
+
+            Authorization: Token ABC123
+            
+    + Body
+
+            {
+              "contact_name": "Jane Doe"
+              "telephone": "1232"
+            }
+
+    + Schema
+
+            {
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "type": "object",
+              "properties": {
+                "telephone": {
+                  "type": "number"
+                },
+                "address": {
+                  "type": "string"
+                },
+                "city": {
+                  "type": "string"
+                },
+                "contact_name": {
+                  "type": "string"
+                }
+              }
+            }
+            
++ Response 200 (application/json)
+
+            {
+              "id": "4f140e59-98c3-4bc2-bf30-eec982c132ad",
+              "company_name": "Aalto-korkeakoulusäätiö",
+              "website": "aalto.fi",
+              "email": "mikko.raskinen@aalto.fi", 
+              "telephone": "1232", 
+              "address": "P.O. Box 11000, FI-00076 AALTO", 
+              "postcode": "02150", 
+              "city": "Helsinki",
+              "operator_type":"open",
+              "contact_name":"Jane Doe",
+              "contact_id":"9921-181-987", 
+              "operational_authorizations": ["SORA"],
+              "authorized_applications": ["Photographing, videotaping","Press, media","Inspection of buildings or roofs","Inspection of other constructions, e.g. bridges","Measurement of mobile phone networks or other telecommunication networks","RPAS flight training"],
+            }
+              
+
+## Group RPAS API
+
+## Equipment registered by a Operator [/operators/{operatorid}/rpas/]
+
+### List equipment registered [GET]
+Returns a list of all the equipment active and inactive that are registered by the operator
+
+
++ Parameters
+    + operatorid: 4f140e59-98c3-4bc2-bf30-eec982c132ad (string) - The ID of a operator in the form of an string
+
++ Request
+    + Headers
+
+            Authorization: Token ABC123
+            
++ Response 200 (application/json)
+
+        {
+            {
+              "equipment_id": "26bc3e7710ea",
+              "manufacturer": "DJI",
+              "model": "Parrot",
+              "mass": "300",
+              "serial_number": "3302f0-2394",
+              "maci_number": "3d9-23",
+              "status": "active",
+              "created_at": "2011-04-10T20:09:31Z",
+              "updated_at": "2014-03-03T18:58:10Z"
+            },
+            {
+              "equipment_id": "26bc3e7710ea",
+              "manufacturer": "3D Robotics",
+              "model": "MX",
+              "mass": "100",
+              "serial_number": "330f932f0",
+              "maci_number": "3d922-23",
+              "status": "inactive",
+              "created_at": "2011-04-10T20:09:31Z",
+              "updated_at": "2014-03-03T18:58:10Z"
+            }
+        }
+
+
+### Add a new RPAS equipment [POST]
+Add a new RPAS assigned to the operator
+
++ Parameters
+    + operatorid: 4f140e59-98c3-4bc2-bf30-eec982c132ad (string) - The ID of a operator in the form of an string
+    
++ Request (application/json)
+    + Headers
+
+            Authorization: Token ABC123
+            
+    + Body
+
+            {
+              "manufacturer": "DJI",
+              "model": "Parrot",
+              "mass": "300",
+              "serial_number": "3302f0-2394",
+              "maci_number": "3d9-23",
+              "status": "active"
+            }
+
+    + Schema
+
+            {
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "type": "object",
+              "properties": {
+                "manufacturer": {
+                  "type": "string"
+                },
+                "model": {
+                  "type": "string"
+                },
+                "mass": {
+                  "type": "number"
+                },
+                "serial_number": {
+                  "type": "string"
+                },
+                "maci_number": {
+                  "type": "string"
+                }
+              }
+            }
+            
++ Response 200 (application/json)
+
+            {
+              "equipment_id": "26bc3e7710ea"
+            }
+    
+## Update registered equipment [/operators/{operatorid}/rpas/update/{rpasid}]
+
+### Update a existing RPAS Detail [POST]
+Updates a entry in the operator database with modified details. 
+
++ Parameters
+    + operatorid: 4f140e59-98c3-4bc2-bf30-eec982c132ad (string) - The ID of a operator in the form of an string
+    + rpasid: 26bc3e7710ea (string) - The ID of a operator in the form of an string
+    
++ Request (application/json)
+    + Headers
+
+            Authorization: Token ABC123
+            
+    + Body
+
+            {
+              "status": "inactive"
+            }
+
+    + Schema
+
+            {
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "type": "object",
+              "properties": {
+                "manufacturer": {
+                  "type": "string"
+                },
+                "model": {
+                  "type": "string"
+                },
+                "mass": {
+                  "type": "number"
+                },
+                "serial_number": {
+                  "type": "string"
+                },
+                "maci_number": {
+                  "type": "string"
+                }
+              }
+            }
+            
++ Response 200 (application/json)
+
+            {
+                "equipment_id": "26bc3e7710ea",
+                "manufacturer": "DJI",
+                "model": "Parrot",
+                "mass": "300",
+                "serial_number": "3302f0-2394",
+                "maci_number": "3d9-23",
+                "status": "active",
+                "created_at": "2011-04-10T20:09:31Z",
+                "updated_at": "2014-03-03T18:58:10Z"
+            }
+
+
