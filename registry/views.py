@@ -1,7 +1,6 @@
 import datetime
 import json
 from datetime import datetime
-
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
@@ -15,9 +14,9 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from registry.models import Activity, Authorization, Contact, Operator, Rpas
-from registry.serializers import (ContactSerializer, OperatorSerializer,
-                                  PrivilagedContactSerializer,
+from registry.models import Activity, Authorization, Contact, Operator, Rpas, Pilot, RpasTest, RpasTestValidity
+from registry.serializers import (ContactSerializer, OperatorSerializer, PilotSerializer, 
+                                  PrivilagedContactSerializer, PrivilagedPilotSerializer,
                                   PrivilagedOperatorSerializer, RpasSerializer)
 
 
@@ -185,6 +184,73 @@ class ContactDetailPrivilaged(mixins.RetrieveModelMixin,
 
 	queryset = Contact.objects.all()
 	serializer_class = PrivilagedContactSerializer
+
+	def get(self, request, *args, **kwargs):
+	    return self.retrieve(request, *args, **kwargs)
+
+	def put(self, request, *args, **kwargs):
+	    return self.update(request, *args, **kwargs)
+
+	def delete(self, request, *args, **kwargs):
+	    return self.destroy(request, *args, **kwargs)
+
+
+class PilotList(mixins.ListModelMixin,
+				  mixins.CreateModelMixin,
+				  generics.GenericAPIView):
+	"""
+	List all pilots in the database
+	"""
+
+	# authentication_classes = (SessionAuthentication,TokenAuthentication)
+	# permission_classes = (IsAuthenticated,)
+
+	queryset = Pilot.objects.all()
+	serializer_class = PilotSerializer
+
+	def get(self, request, *args, **kwargs):
+		return self.list(request, *args, **kwargs)
+
+	def post(self, request, *args, **kwargs):
+		return self.create(request, *args, **kwargs)
+
+
+
+class PilotDetail(mixins.RetrieveModelMixin,
+                    mixins.UpdateModelMixin,
+                    mixins.DestroyModelMixin,
+                    generics.GenericAPIView):
+	"""
+	Retrieve, update or delete a Pilot instance.
+	"""
+	# authentication_classes = (SessionAuthentication,TokenAuthentication)
+	# permission_classes = (IsAuthenticated,)
+
+	queryset = Pilot.objects.all()
+	serializer_class = PilotSerializer
+
+	def get(self, request, *args, **kwargs):
+	    return self.retrieve(request, *args, **kwargs)
+
+	def put(self, request, *args, **kwargs):
+	    return self.update(request, *args, **kwargs)
+
+	def delete(self, request, *args, **kwargs):
+	    return self.destroy(request, *args, **kwargs)
+
+
+class PilotDetailPrivilaged(mixins.RetrieveModelMixin,
+                    mixins.UpdateModelMixin,    
+                    mixins.DestroyModelMixin,
+                    generics.GenericAPIView):
+	"""
+	Retrieve, update or delete a Pilot instance.
+	"""
+	# authentication_classes = (SessionAuthentication,TokenAuthentication)
+	# permission_classes = (IsAuthenticated,)
+
+	queryset = Pilot.objects.all()
+	serializer_class = PrivilagedPilotSerializer
 
 	def get(self, request, *args, **kwargs):
 	    return self.retrieve(request, *args, **kwargs)

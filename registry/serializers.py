@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from registry.models import Activity, Authorization, Operator, Contact, Rpas
+from registry.models import Activity, Authorization, Operator, Contact, Rpas, Pilot
 
 
 class OperatorSerializer(serializers.ModelSerializer):
@@ -46,7 +46,13 @@ class ContactSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Contact
-        fields = ('id', 'contact_id', 'first_name', 'last_name', 'email','phone_number','address','postcode','city','updated_at')
+        fields = ('id', 'operator', 'contact_id', 'first_name', 'last_name', 'email','phone_number','address','postcode','city','updated_at')
+
+class PilotSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Pilot
+        fields = ('id', 'operator','is_active', 'first_name', 'last_name', 'email','phone_number','updated_at')
 
 class RpasSerializer(serializers.ModelSerializer):
 
@@ -55,9 +61,27 @@ class RpasSerializer(serializers.ModelSerializer):
         fields = ('id', 'mass', 'manufacturer', 'model','serial_number','maci_number','status','created_at','updated_at')
 
 
+class PrivilagedPilotSerializer(serializers.ModelSerializer):
+    ''' This is the privilaged serializer for Pilot specially for law enforcement and other privilaged interested parties '''
+    tests = serializers.SerializerMethodField()
+    operator_id = serializers.SerializerMethodField()
+	
+    def get_tests(self, response):
+        tests = []
+        p = Pilot.objects.get(id=response.id)
+        all_tests = p.tests.all()
+        for test in all_tests: 
+            tests.append(test.name)
+        return tests
+
+    class Meta:
+        model = Pilot
+        fields = ('id',  'operator', 'first_name','is_active', 'last_name', 'email','phone_number','tests', 'updated_at')
+
 
 class PrivilagedContactSerializer(serializers.ModelSerializer):
-    ''' This is the privilaged serializer for Contact model specially for law enforcement and other privilaged operators '''
+    ''' This is the privilaged serializer for Contact model specially for law enforcement and other privilaged interested parties '''
+
     authorized_activities = serializers.SerializerMethodField()
     operational_authorizations = serializers.SerializerMethodField()
 
@@ -81,5 +105,5 @@ class PrivilagedContactSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Contact
-        fields = ('id', 'company_name', 'website', 'email', 'operator_type', 'phone_number', 'address',
+        fields = ('id', 'company_name', 'operator','website', 'email', 'operator_type', 'phone_number', 'address',
                   'postcode', 'city', 'operational_authorizations', 'authorized_activities', 'created_at', 'updated_at')

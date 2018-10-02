@@ -18,6 +18,11 @@
      "pk":"e7bfa98c-8e4f-40bd-b42f-62fd3651d7da",
      "fields":{
         "title":"SORA",
+        "airspace_type":1,
+        "permit_to_fly_above_crowd":1,
+        "area_type":1,
+        "risk_type":1, 
+        "authorization_type":1,
         "created_at":"2018-09-04T13:20:30+01:00",
         "updated_at":"2018-09-04T13:20:30+01:00"
      }
@@ -26,7 +31,12 @@
      "model":"registry.authorization",
      "pk":"6be25abc-a43d-44d2-9c16-b8dee47bb64d",
      "fields":{
-        "title":"SORAv2",
+      "title":"SORA V2",
+      "airspace_type":2,
+      "permit_to_fly_above_crowd":0,
+      "area_type":1,
+      "risk_type":6, 
+      "authorization_type":1,
         "created_at":"2018-09-04T13:20:30+01:00",
         "updated_at":"2018-09-04T13:20:30+01:00"
      }
@@ -43,6 +53,7 @@
         "address":"Claureen Lahinch rd Ennis",
         "postcode":"D02VE22",
         "city":"Westport",
+        "vat_number":"IE5895475T",
         "operational_authorizations":[
            "e7bfa98c-8e4f-40bd-b42f-62fd3651d7da"
         ],
@@ -86,6 +97,7 @@
         "email":"catherine@gmail.com",
         "address":"Malroc House, South Mall",
         "phone_number":"+353416852181",
+        "social_security_number":"79464412258",
         "created_at":"2018-09-04T13:20:30+01:00",
         "updated_at":"2018-09-04T13:20:30+01:00"
      }
@@ -114,6 +126,7 @@
         "mass":"300",
         "manufacturer":"DJI",
         "model":"Parrot",
+        "is_airworthy":1, 
         "serial_number":"b568-ab1ca510f70e",
         "maci_number":"86ac-42dc-8d19",
         "created_at":"2018-09-04T13:20:30+01:00",
@@ -128,8 +141,59 @@
         "mass":"700",
         "manufacturer":"Sensefly",
         "model":"eBee",
+        "is_airworthy":1, 
         "serial_number":"beb6-01ccded8529d",
         "maci_number":"eb30-4fb4-b12d",
+        "created_at":"2018-09-04T13:20:30+01:00",
+        "updated_at":"2018-09-04T13:20:30+01:00"
+     }
+  },
+  {
+     "model":"registry.rpastest",
+     "pk":"da7dae8f-3fea-46b6-9076-fe3735817de9",
+     "fields":{
+        "test_type":1,
+        "name":"RPAS Safety Basics",
+        "created_at":"2018-09-04T13:20:30+01:00",
+        "updated_at":"2018-09-04T13:20:30+01:00"
+     }
+  },
+  {
+     "model":"registry.rpastest",
+     "pk":"ad7a73e4-9d11-4d6f-9e4c-36013fc4ac70",
+     "fields":{
+        "test_type":1,
+        "name":"Advanced RPAS flying in Urban Environments",
+        "created_at":"2018-09-04T13:20:30+01:00",
+        "updated_at":"2018-09-04T13:20:30+01:00"
+     }
+  },
+  {
+     "model":"registry.pilot",
+     "pk":"d4b8aa2c-0a52-4adc-806a-f363deb6a1e0",
+     "fields":{
+        "operator":"566d63bb-cb1c-42dc-9a51-baef0d0a8d04",
+        "first_name":"Mickey",
+        "middle_name":"Richard",
+        "last_name":"Matheny",
+        "is_active":1, 
+        "email":"MickeyRMatheny@teleworm.us",
+        "phone_number":"+499122992107",
+        "created_at":"2018-09-04T13:20:30+01:00",
+        "updated_at":"2018-09-04T13:20:30+01:00"
+     }
+  },
+  {
+     "model":"registry.pilot",
+     "pk":"2f15a395-65a3-4a73-a492-57c7c470d527",
+     "fields":{
+        "operator":"41174c3f-e86c-4e5a-a629-32d4d9da6011",
+        "first_name":"Modesta",
+        "middle_name":"Jeanie",
+        "last_name":"Strauss",
+        "is_active":1, 
+        "email":"dludgrove7@posterous.com",
+        "phone_number":"+499122992107",
         "created_at":"2018-09-04T13:20:30+01:00",
         "updated_at":"2018-09-04T13:20:30+01:00"
      }

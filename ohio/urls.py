@@ -36,6 +36,10 @@ urlpatterns = [
     path('api/v1/contacts', registryviews.ContactList.as_view()),
     path('api/v1/contacts/<uuid:pk>', registryviews.ContactDetail.as_view()),
     path('api/v1/contacts/<uuid:pk>/privilaged', registryviews.ContactDetailPrivilaged.as_view()),
+    path('api/v1/operators/<uuid:pk>/rpas', registryviews.OperatorRpas.as_view()),
+    path('api/v1/pilots', registryviews.PilotList.as_view()),
+    path('api/v1/pilots/<uuid:pk>', registryviews.PilotDetail.as_view()),
+    path('api/v1/pilots/<uuid:pk>/privilaged', registryviews.PilotDetailPrivilaged.as_view()),
     
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

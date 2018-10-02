@@ -363,7 +363,7 @@ Returns a list of contact people in the registry
 ## Single Contact Details [/contacts/{contactid}/]
 
 ### Get a single contact [GET]
-Returns all the details of a single contact and basic information about the contact person available in the database. The conact id is the unique ID assoicated with a contact person for the operator that is in the form of a uuid.
+Returns all the details of a single contact and basic information about the contact person available in the database. The contact id is the unique ID assoicated with a contact person for the operator that is in the form of a uuid.
 
 + Parameters
     + contactid: 4f140e59-98c3-4bc2-bf30-eec982c132ad (string) - The ID of a contact person for a operator in the form of an string
@@ -457,7 +457,142 @@ Updates a contact point entry in the operator database with modified details.
               "operational_authorizations": ["SORA"],
               "authorized_applications": ["Photographing, videotaping","Press, media","Inspection of buildings or roofs","Inspection of other constructions, e.g. bridges","Measurement of mobile phone networks or other telecommunication networks","RPAS flight training"],
             }
-              
+
+
+## Group Pilot API
+Resources related to Contacts with in the Registration in the API
+
+
+## All Pilots [/pilots/]
+
+### List all pilots [GET]
+Returns a list of pilots in the registry
+    
++ Request (application/json)
+    + Headers
+
+            Authorization: Token ABC123
+            
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "d4b8aa2c-0a52-4adc-806a-f363deb6a1e0",
+                "operator": "566d63bb-cb1c-42dc-9a51-baef0d0a8d04",
+                "is_active": true,
+                "first_name": "Mickey",
+                "last_name": "Matheny",
+                "email": "MickeyRMatheny@teleworm.us",
+                "phone_number": "+499122992107",
+                "updated_at": "2018-09-04T12:20:30Z"
+            },
+            {
+                "id": "2f15a395-65a3-4a73-a492-57c7c470d527",
+                "operator": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
+                "is_active": true,
+                "first_name": "Modesta",
+                "last_name": "Strauss",
+                "email": "dludgrove7@posterous.com",
+                "phone_number": "+499122992107",
+                "updated_at": "2018-09-04T12:20:30Z"
+            }
+        ]
+
+## Single Pilot Details [/pilots/{pilotid}/]
+
+### Get a single pilot [GET]
+Returns all the details of a single pilot and basic information about the pilot available in the database. The pilot id is the unique ID assoicated with a pilot for the operator that is in the form of a uuid.
+
++ Parameters
+    + pilotid: 4f140e59-98c3-4bc2-bf30-eec982c132ad (string) - The ID of a pilot for a operator in the form of an string
+    
++ Request (application/json)
+    + Headers
+
+            Authorization: Token ABC123
+            
++ Response 200 (application/json)
+
+    + Attributes (object)
+        + id: 250FF (string, required)
+        + operator: 250FF (string)- Registered name of the operator
+        + first_name: Modesta (string) - First Name of the pilot
+        + last_name: Strauss (string) - Last Name of the pilot
+        + phone_number: +499122992107 (string) - Phone number of the pilot
+        + email: dludgrove7@posterous.com (string) - email of the pilot
+
+            A valid email address per [IETF](https://tools.ietf.org/html/rfc5322)
+       
+    + Body
+
+            {
+                "id": "2f15a395-65a3-4a73-a492-57c7c470d527",
+                "operator": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
+                "is_active": true,
+                "first_name": "Modesta",
+                "last_name": "Strauss",
+                "email": "dludgrove7@posterous.com",
+                "phone_number": "+499122992107",
+                "updated_at": "2018-09-04T12:20:30Z"
+            }
+
+## Update Existing Pilot Details [/contacts/update/{pilotid}/]
+
+### Update pilot details [POST]
+Updates a pilot entry in the operator database with modified details. 
+
++ Parameters
+    + pilotid: 4f140e59-98c3-4bc2-bf30-eec982c132ad (string) - The ID of a pilot in the form of an string
+    
++ Request (application/json)
+    + Headers
+
+            Authorization: Token ABC123
+            
+    + Body
+
+            {
+              "first_name": "Jane",
+              "is_active": 1
+            }
+
+    + Schema
+
+            {
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "type": "object",
+              "properties": {
+                "first_name": {
+                  "type": "string"
+                },
+                "last_name": {
+                  "type": "string"
+                },
+                "is_active": {
+                  "type": "boolean"
+                },
+                "phone_number": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                }
+              }
+            }
+            
++ Response 200 (application/json)
+
+            {
+                "id": "2f15a395-65a3-4a73-a492-57c7c470d527",
+                "operator": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
+                "is_active": true,
+                "first_name": "Jane",
+                "last_name": "Strauss",
+                "email": "dludgrove7@posterous.com",
+                "phone_number": "+499122992107",
+                "updated_at": "2018-09-04T12:20:30Z"
+            }
+ 
 
 ## Group RPAS API
 
