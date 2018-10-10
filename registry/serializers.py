@@ -58,9 +58,18 @@ class RpasSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Rpas
-        fields = ('id', 'mass', 'manufacturer', 'model','serial_number','maci_number','status','created_at','updated_at')
+        fields = ('id', 'mass', 'manufacturer', 'model','esn','maci_number','status','created_at','updated_at')
+        
+        
 
+class RpasESNSerializer(serializers.ModelSerializer):
 
+    class Meta:
+        model = Rpas
+        fields = ('id', 'mass', 'manufacturer', 'model','esn','maci_number','status','created_at','updated_at')
+        lookup_field = 'esn'
+        
+        
 class PrivilagedPilotSerializer(serializers.ModelSerializer):
     ''' This is the privilaged serializer for Pilot specially for law enforcement and other privilaged interested parties '''
     tests = serializers.SerializerMethodField()

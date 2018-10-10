@@ -51,6 +51,9 @@ Adds a entry in the operator database
               "contact_name":"John Smith",
               "operational_authorizations": ["SORA"],
               "authorized_applications": ["Photographing, videotaping","Press, media","Inspection of buildings or roofs","Inspection of other constructions, e.g. bridges","Measurement of mobile phone networks or other telecommunication networks","RPAS flight training"],
+              "vat_number":"DE5396483F",
+              "company_number":"45321",
+              "insurance_number":"349453EF"
             }
 
     + Schema
@@ -86,6 +89,15 @@ Adds a entry in the operator database
                 "contact_name": {
                   "type": "string"
                 },
+                "vat_number": {
+                  "type": "string"
+                },
+                "insurance_number": {
+                  "type": "string"
+                },
+                "company_number": {
+                  "type": "string"
+                },
                 "operational_authorizations": {
                   "type": "array",
                   "items": {
@@ -119,6 +131,9 @@ Adds a entry in the operator database
               "contact_id":"9921-181-987", 
               "operational_authorizations": ["SORA"],
               "authorized_applications": ["Photographing, videotaping","Press, media","Inspection of buildings or roofs","Inspection of other constructions, e.g. bridges","Measurement of mobile phone networks or other telecommunication networks","RPAS flight training"],
+              "vat_number":"DE5396483F",
+              "company_number":"45321",
+              "insurance_number":"349453EF",
               "created_at": "2018-03-03T18:58:10Z",
               "updated_at": "2018-03-03T18:58:10Z"
             }
@@ -231,7 +246,10 @@ This is a privilaged request made by a interested party that has special access 
                 "city": "espoo",
                 "registered": "2018-05-31T20:09:31Z",
                 "exipration": "2021-05-31T20:09:31Z",
-                "authorized_applications": ["Photographing, videotaping","Press, media","Inspection of buildings or roofs","Inspection of other constructions, e.g. bridges","Measurement of mobile phone networks or other telecommunication networks","RPAS flight training"]   
+                "authorized_applications": ["Photographing, videotaping","Press, media","Inspection of buildings or roofs","Inspection of other constructions, e.g. bridges","Measurement of mobile phone networks or other telecommunication networks","RPAS flight training"],
+                "vat_number":"DE5396483F",
+                "company_number":"45321",
+                "insurance_number":"349453EF",   
             }
 
 
@@ -288,6 +306,15 @@ Updates a entry in the operator database with modified details.
                 "contact_name": {
                   "type": "string"
                 },
+                "vat_number": {
+                  "type": "string"
+                },
+                "insurance_number": {
+                  "type": "string"
+                },
+                "company_number": {
+                  "type": "string"
+                },
                 "operational_authorizations": {
                   "type": "array",
                   "items": {
@@ -320,7 +347,9 @@ Updates a entry in the operator database with modified details.
               "contact_name":"John Smith",
               "contact_id":"9921-181-987", 
               "operational_authorizations": ["SORA"],
-              "authorized_applications": ["Photographing, videotaping","Press, media","Inspection of buildings or roofs","Inspection of other constructions, e.g. bridges","Measurement of mobile phone networks or other telecommunication networks","RPAS flight training"],
+              "authorized_applications": ["Photographing, videotaping","Press, media","Inspection of buildings or roofs","Inspection of other constructions, e.g. bridges","Measurement of mobile phone networks or other telecommunication networks","RPAS flight training"],"vat_number":"DE5396483F",
+              "company_number":"45321",
+              "insurance_number":"349453EF",  
             }
               
 
@@ -345,6 +374,7 @@ Returns a list of contact people in the registry
             "id": "4f140e59-98c3-4bc2-bf30-eec982c132ad",
             "company_name": "1000 feet Oy",
             "contact_name":"John Smith",
+            
             "operator_id" "4f140e59-98c3-4bc2-bf30-eec982c132ad",
             "created_at": "2018-03-03T18:58:10Z",
             "updated_at": "2018-03-03T18:58:10Z"
@@ -618,7 +648,7 @@ Returns a list of all the equipment active and inactive that are registered by t
               "manufacturer": "DJI",
               "model": "Parrot",
               "mass": "300",
-              "serial_number": "3302f0-2394",
+              "esn": "4D4652310000000000000000313233343436373839414243",
               "maci_number": "3d9-23",
               "status": "active",
               "created_at": "2011-04-10T20:09:31Z",
@@ -629,7 +659,7 @@ Returns a list of all the equipment active and inactive that are registered by t
               "manufacturer": "3D Robotics",
               "model": "MX",
               "mass": "100",
-              "serial_number": "330f932f0",
+              "esn": "5G6532640000000000000000823050083171098833641055",
               "maci_number": "3d922-23",
               "status": "inactive",
               "created_at": "2011-04-10T20:09:31Z",
@@ -655,7 +685,7 @@ Add a new RPAS assigned to the operator
               "manufacturer": "DJI",
               "model": "Parrot",
               "mass": "300",
-              "serial_number": "3302f0-2394",
+              "esn": "5G6532640000000000000000823050083171098833641055",
               "maci_number": "3d9-23",
               "status": "active"
             }
@@ -675,7 +705,7 @@ Add a new RPAS assigned to the operator
                 "mass": {
                   "type": "number"
                 },
-                "serial_number": {
+                "esn": {
                   "type": "string"
                 },
                 "maci_number": {
@@ -725,7 +755,7 @@ Updates a entry in the operator database with modified details.
                 "mass": {
                   "type": "number"
                 },
-                "serial_number": {
+                "esn": {
                   "type": "string"
                 },
                 "maci_number": {
@@ -741,11 +771,70 @@ Updates a entry in the operator database with modified details.
                 "manufacturer": "DJI",
                 "model": "Parrot",
                 "mass": "300",
-                "serial_number": "3302f0-2394",
+                "esn": "5G6532640000000000000000823050083171098833641055",
                 "maci_number": "3d9-23",
                 "status": "active",
                 "created_at": "2011-04-10T20:09:31Z",
                 "updated_at": "2014-03-03T18:58:10Z"
             }
 
+
+
+## Single RPAS Details [/rpas/{rpasid}]
+
+### Get a single RPAS [GET]
+Get information about a RPAS by looking up its ESN
+
++ Parameters
+    + rpasid: 4D4652310000000000000000313233343436373839414243 (string) - ESN of RPAS, ESN = [Manufacturer’s Code] [Serial Number] [IMEISV] [Performative Characteristics]
+
+    
++ Request (application/json)
+    + Headers
+
+            Authorization: Token ABC123
+            
+    + Body
+
+            {
+              "status": "inactive"
+            }
+
+    + Schema
+
+            {
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "type": "object",
+              "properties": {
+                "manufacturer": {
+                  "type": "string"
+                },
+                "model": {
+                  "type": "string"
+                },
+                "mass": {
+                  "type": "number"
+                },
+                "esn": {
+                  "type": "string"
+                },
+                "maci_number": {
+                  "type": "string"
+                }
+              }
+            }
+            
++ Response 200 (application/json)
+
+            {
+                "equipment_id": "26bc3e7710ea",
+                "manufacturer": "DJI",
+                "model": "Parrot",
+                "mass": "300",
+                "esn": "5G6532640000000000000000823050083171098833641055",
+                "maci_number": "3d9-23",
+                "status": "active",
+                "created_at": "2011-04-10T20:09:31Z",
+                "updated_at": "2014-03-03T18:58:10Z"
+            }
 

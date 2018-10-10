@@ -54,6 +54,7 @@
         "postcode":"D02VE22",
         "city":"Westport",
         "vat_number":"IE5895475T",
+        "company_number":"489434",
         "operational_authorizations":[
            "e7bfa98c-8e4f-40bd-b42f-62fd3651d7da"
         ],
@@ -76,6 +77,8 @@
         "phone_number":"+4963610678",
         "address":"Buelowstrasse 98",
         "postcode":"56753",
+        "company_number":"895884",
+        "insurance_number":"985049991",
         "city":"Welling",
         "operational_authorizations":[
            "6be25abc-a43d-44d2-9c16-b8dee47bb64d"
@@ -127,7 +130,7 @@
         "manufacturer":"DJI",
         "model":"Parrot",
         "is_airworthy":1, 
-        "serial_number":"b568-ab1ca510f70e",
+        "esn":"4D4652310000000000000000313233343436373839414243",
         "maci_number":"86ac-42dc-8d19",
         "created_at":"2018-09-04T13:20:30+01:00",
         "updated_at":"2018-09-04T13:20:30+01:00"
@@ -142,7 +145,7 @@
         "manufacturer":"Sensefly",
         "model":"eBee",
         "is_airworthy":1, 
-        "serial_number":"beb6-01ccded8529d",
+        "esn":"5G6532640000000000000000823050083171098833641055",
         "maci_number":"eb30-4fb4-b12d",
         "created_at":"2018-09-04T13:20:30+01:00",
         "updated_at":"2018-09-04T13:20:30+01:00"

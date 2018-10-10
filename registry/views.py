@@ -17,7 +17,7 @@ from rest_framework.views import APIView
 from registry.models import Activity, Authorization, Contact, Operator, Rpas, Pilot, RpasTest, RpasTestValidity
 from registry.serializers import (ContactSerializer, OperatorSerializer, PilotSerializer, 
                                   PrivilagedContactSerializer, PrivilagedPilotSerializer,
-                                  PrivilagedOperatorSerializer, RpasSerializer)
+                                  PrivilagedOperatorSerializer, RpasSerializer, RpasESNSerializer)
 
 
 class OperatorList(mixins.ListModelMixin,
@@ -127,6 +127,17 @@ class OperatorRpas(mixins.RetrieveModelMixin,
 
 	def delete(self, request, *args, **kwargs):
 	    return self.destroy(request, *args, **kwargs)
+
+class RpasESNDetails(mixins.RetrieveModelMixin,
+                    generics.GenericAPIView):
+
+    queryset = Rpas.objects.all()
+    serializer_class = RpasESNSerializer
+    lookup_field = 'esn'
+	
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
+
 
 class ContactList(mixins.ListModelMixin,
 				  mixins.CreateModelMixin,

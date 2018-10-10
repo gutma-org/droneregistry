@@ -11,8 +11,10 @@ from django.core.validators import RegexValidator
 
 # Create your models here.
 class Activity(models.Model):
+    ACTIVITYTYPE_CHOICES = ((0, _('NA')),(1, _('Open')),(2, _('Specific')),(3, _('Specific')),)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=140)
+    activity_type = models.IntegerField(choices=ACTIVITYTYPE_CHOICES, default = 0)
 
     def __unicode__(self):
        return self.name
@@ -44,7 +46,7 @@ class Authorization(models.Model):
         return self.title
 
 class Operator(models.Model):
-    OPTYPE_CHOICES = ((0, _('Open')),(1, _('Specific')),(2, _('Certified')),)
+    OPTYPE_CHOICES = ((0, _('NA')),(1, _('LUC')),(2, _('Non-LUC')),)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     company_name = models.CharField(max_length=280)
     website = models.URLField()
@@ -60,6 +62,8 @@ class Operator(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     vat_number = models.CharField(max_length=25, blank=True, null=True)
+    insurance_number = models.CharField(max_length=25, blank=True, null=True)
+    company_number = models.CharField(max_length=25, blank=True, null=True)
 
     def __unicode__(self):
        return self.company_name
@@ -68,7 +72,7 @@ class Operator(models.Model):
         return self.company_name
 
 class Contact(models.Model):
-    ROLE_CHOICES = ((0, _('Responsible')),(1, _('Other')))
+    ROLE_CHOICES = ((0, _('Other')),(1, _('Responsible')))
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     operator = models.ForeignKey(Operator, models.CASCADE)
     first_name = models.CharField(max_length=30)
@@ -76,6 +80,7 @@ class Contact(models.Model):
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
     address = models.TextField()
+    role_type = models.IntegerField(choices=ROLE_CHOICES, default = 0)
     postcode = models.CharField(_("post code"), max_length=10, default="0")
     city = models.CharField(max_length=50)
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
@@ -83,6 +88,7 @@ class Contact(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     social_security_number = models.CharField(max_length=25, blank=True, null=True)
+    date_of_birth = models.DateField(blank=True, null=True)
 
     def __unicode__(self):
        return self.email
@@ -118,6 +124,8 @@ class Pilot(models.Model):
     is_active = models.BooleanField(default =0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    date_of_birth = models.DateField(blank=True, null=True)
+
 
 
 class RpasTestValidity(models.Model):
@@ -136,7 +144,7 @@ class Rpas(models.Model):
     is_airworthy = models.BooleanField(default = 0)
     manufacturer = models.CharField(max_length = 280)
     model = models.CharField(max_length = 280)
-    serial_number = models.CharField(max_length = 280)
+    esn = models.CharField(max_length = 48, default='000000000000000000000000000000000000000000000000')
     maci_number = models.CharField(max_length = 280)
     status = models.IntegerField(choices=STATUS_CHOICES, default = 1)
     created_at = models.DateTimeField(auto_now_add=True)

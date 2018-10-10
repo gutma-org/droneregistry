@@ -33,6 +33,7 @@ urlpatterns = [
     path('api/v1/operators/<uuid:pk>/privilaged', registryviews.OperatorDetailPrivilaged.as_view()),
     path('api/v1/operators/<uuid:pk>', registryviews.OperatorDetail.as_view()),
     path('api/v1/operators/<uuid:pk>/rpas', registryviews.OperatorRpas.as_view()),
+    path('api/v1/rpas/<esn>', registryviews.RpasESNDetails.as_view()),
     path('api/v1/contacts', registryviews.ContactList.as_view()),
     path('api/v1/contacts/<uuid:pk>', registryviews.ContactDetail.as_view()),
     path('api/v1/contacts/<uuid:pk>/privilaged', registryviews.ContactDetailPrivilaged.as_view()),
