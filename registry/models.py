@@ -135,14 +135,43 @@ class RpasTestValidity(models.Model):
     taken_at = models.DateTimeField(blank=True, null=True)
     expiration = models.DateTimeField(blank=True, null=True)
 
+class RpasTypeCertificate(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    type_certificate_id = models.CharField(max_length = 280)
+    type_certificate_issuing_country = models.CharField(max_length = 280)
+    type_certificate_holder = models.CharField(max_length = 140)
+    type_certificate_holder_country = models.CharField(max_length = 140)
+
+class Organization(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    full_name = models.CharField(max_length = 140)
+    common_name = models.CharField(max_length = 140)
+    acronym = models.CharField(max_length =10)
+    role = models.CharField(max_length = 140)
+    country = models.CharField(max_length =140)
+
+
   
 class Rpas(models.Model):
+    AIRCRAFT_CATEGORY = ((0, _('Other')),(1, _('FIXED WING')),(2, _('ROTORCRAFT')),(3, _('LIGHTER-THAN-AIR')),(4, _('HYBRID LIFT')),)
+    AIRCRAFT_SUB_CATEGORY = ((0, _('Other')),(1, _('AIRPLANE')),(2, _('NONPOWERED GLIDER')),(3, _('POWERED GLIDER')),(4, _('HELICOPTER')),(5, _('GYROPLANE')),(6, _('BALLOON')),(6, _('AIRSHIP')),(7, _('UAV')),)
     STATUS_CHOICES = ((0, _('Inactive')),(1, _('Active')),)
+    
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     operator = models.ForeignKey(Operator, models.CASCADE)
     mass = models.IntegerField()
     is_airworthy = models.BooleanField(default = 0)
-    manufacturer = models.CharField(max_length = 280)
+    manufacturer = models.CharField(max_length = 280)    
+    make = models.CharField(max_length = 280)    
+    master_series = models.CharField(max_length = 280)    
+    series = models.CharField(max_length = 280)
+    popular_name = models.CharField(max_length = 280)    
+    category = models.IntegerField(choices=AIRCRAFT_CATEGORY, default = 0)
+    sub_category = models.IntegerField(choices=AIRCRAFT_SUB_CATEGORY, default = 7)
+    icao_aircraft_type_designator = models.CharField(max_length =4)
+    max_certified_takeoff_weight = models.DecimalField(decimal_places = 3)
+    begin_date = models.DateTimeField()
+    type_certificate = models.ForeignKey(RpasTypeCertificate, models.CASCADE)
     model = models.CharField(max_length = 280)
     esn = models.CharField(max_length = 48, default='000000000000000000000000000000000000000000000000')
     maci_number = models.CharField(max_length = 280)
