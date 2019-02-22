@@ -166,7 +166,7 @@ class Rpas(models.Model):
     master_series = models.CharField(max_length = 280)    
     series = models.CharField(max_length = 280)
     popular_name = models.CharField(max_length = 280)    
-    manufacturer = models.ForeignKey(Organization)
+    manufacturer = models.ForeignKey(Organization, models.CASCADE)
     category = models.IntegerField(choices=AIRCRAFT_CATEGORY, default = 0)
     sub_category = models.IntegerField(choices=AIRCRAFT_SUB_CATEGORY, default = 7)
     icao_aircraft_type_designator = models.CharField(max_length =4)
