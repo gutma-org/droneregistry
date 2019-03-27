@@ -171,7 +171,7 @@ class Rpas(models.Model):
     category = models.IntegerField(choices=AIRCRAFT_CATEGORY, default = 0)
     sub_category = models.IntegerField(choices=AIRCRAFT_SUB_CATEGORY, default = 7)
     icao_aircraft_type_designator = models.CharField(max_length =4)
-    max_certified_takeoff_weight = models.DecimalField(decimal_places = 3)
+    max_certified_takeoff_weight = models.DecimalField(decimal_places = 3, max_digits=10)
     begin_date = models.DateTimeField()
     type_certificate = models.ForeignKey(RpasTypeCertificate, models.CASCADE)
     model = models.CharField(max_length = 280)
