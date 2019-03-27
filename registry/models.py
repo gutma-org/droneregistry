@@ -31,7 +31,7 @@ class Authorization(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=140)
     operation_max_height = models.IntegerField(default = 0)
-    operation_altitude_system = models.IntegerField(default =0)
+    operation_altitude_system = models.IntegerField(default =0, choices = ALTITUDE_SYSTEM)
     airspace_type = models.IntegerField(choices = AIRSPACE_CHOICES, default =0)
     permit_to_fly_above_crowd = models.BooleanField(default = 0)
     operation_area_type = models.IntegerField(choices=AREATYPE_CHOICES, default = 0)
@@ -66,12 +66,6 @@ class Operator(models.Model):
     vat_number = models.CharField(max_length=25, blank=True, null=True)
     insurance_number = models.CharField(max_length=25, blank=True, null=True)
     company_number = models.CharField(max_length=25, blank=True, null=True)
-    full_name = models.CharField(max_length = 140)
-    common_name = models.CharField(max_length = 140)
-    acronym = models.CharField(max_length =10)
-    role = models.CharField(max_length = 140)
-    country = models.CharField(max_length =3)
-
 
     def __unicode__(self):
        return self.company_name
@@ -150,8 +144,14 @@ class RpasTypeCertificate(models.Model):
     type_certificate_holder = models.CharField(max_length = 140)
     type_certificate_holder_country = models.CharField(max_length = 140)
 
-class Organization(models.Model):
+class Manufacturer(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
+    full_name = models.CharField(max_length = 140, default = 'NA')
+    common_name = models.CharField(max_length = 140, default = 'NA')
+    acronym = models.CharField(max_length =10, default = 'NA')
+    role = models.CharField(max_length = 140, default = 'NA')
+    country = models.CharField(max_length =3, default = 'NA')
 
   
 class Rpas(models.Model):
@@ -167,13 +167,13 @@ class Rpas(models.Model):
     master_series = models.CharField(max_length = 280, blank= True, null=True)    
     series = models.CharField(max_length = 280, blank= True, null=True)
     popular_name = models.CharField(max_length = 280, blank= True, null=True)    
-    manufacturer = models.ForeignKey(Organization, models.CASCADE)
+    manufacturer = models.ForeignKey(Manufacturer, models.CASCADE)
     category = models.IntegerField(choices=AIRCRAFT_CATEGORY, default = 0)
     sub_category = models.IntegerField(choices=AIRCRAFT_SUB_CATEGORY, default = 7)
-    icao_aircraft_type_designator = models.CharField(max_length =4)
-    max_certified_takeoff_weight = models.DecimalField(decimal_places = 3, max_digits=10)
-    begin_date = models.DateTimeField()
-    type_certificate = models.ForeignKey(RpasTypeCertificate, models.CASCADE)
+    icao_aircraft_type_designator = models.CharField(max_length =4, default = '0000')
+    max_certified_takeoff_weight = models.DecimalField(decimal_places = 3, max_digits=10, default = 0.00)
+    begin_date = models.DateTimeField(blank= True, null= True)
+    type_certificate = models.ForeignKey(RpasTypeCertificate, models.CASCADE, blank= True, null= True)
     model = models.CharField(max_length = 280)
     esn = models.CharField(max_length = 48, default='000000000000000000000000000000000000000000000000')
     maci_number = models.CharField(max_length = 280)

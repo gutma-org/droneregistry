@@ -3,8 +3,8 @@
      "model":"registry.activity",
      "pk":"7a875ff9-79ee-460e-816f-30360e0ac645",
      "fields":{
-        "name":"photographing",
-        "activity_type":0
+        "name":"photographing"
+        
      }
   },
   {
@@ -24,7 +24,9 @@
         "risk_type":1, 
         "authorization_type":1,
         "operation_max_height":100,     
-        "operation_area_type" :1        
+        "operation_area_type" :1,
+        "created_at":"2018-09-04T13:20:30+01:00",
+        "updated_at":"2018-09-04T13:20:30+01:00"  
      }
   },
   {
@@ -37,7 +39,9 @@
       "risk_type":6, 
       "authorization_type":1,
       "operation_max_height":200,    
-      "operation_area_type" :1            
+      "operation_area_type" :1,  
+      "created_at":"2018-09-04T13:20:30+01:00",
+      "updated_at":"2018-09-04T13:20:30+01:00"      
      }
   },
   {
@@ -47,10 +51,6 @@
         "company_name":"A.J. August Photography",
         "website":"august.com",
         "email":"aj@august.com",
-        "common_name":"AJA Photos",
-        "acronym":"EI",
-        "role":"Drone Operator",
-        "country":"IRE",
         "operator_type":"0",
         "phone_number":"+3041112232",
         "address":"Claureen Lahinch rd Ennis",
@@ -74,11 +74,6 @@
      "pk":"566d63bb-cb1c-42dc-9a51-baef0d0a8d04",
      "fields":{
         "company_name":"Electric Inspection",
-        "full_name":"Construcciones Aeronauticas Pvt. Ltd.",
-        "common_name":"EI SA",
-        "acronym":"EI",
-        "role":"Drone Operator",
-        "country":"IRE",
         "website":"electricinspection.com",
         "email":"contact@electricinspection.com",
         "operator_type":"0",
@@ -110,7 +105,7 @@
         "phone_number":"+353416852181",
         "postcode":"D02PT89",
         "role_type":"0", 
-        "date_of_birth":"1979-09-12T13:20:30+01:00",
+        "date_of_birth":"1979-09-12",
         "social_security_number":"79464412258",
         "created_at":"2018-09-04T13:20:30+01:00",
         "updated_at":"2018-09-04T13:20:30+01:00"
@@ -147,13 +142,24 @@
 
   
   {
-     "model":"registry.organization",
+     "model":"registry.manufacturer",
      "pk":"6f9cd973-15b9-4066-b4d0-1e8bbd0f279d",
      "fields":{
-        "full_name":"1dc42b2a-7e3f-4e87-b23d-353ec8a06705",
-        "common_name":"IRE",
-        "acronym":"Agro Products Inc.",
-        "role":"IRE",
+        "full_name":"DJI Holdings Inc",
+        "common_name":"DJI",
+        "acronym":"DJI Worldwide",
+        "role":"Manufacturer",
+        "country":"IRE"
+     }
+  },
+  {
+     "model":"registry.manufacturer",
+     "pk":"4effcea2-e9d4-4696-891f-52d350d68a9f",
+     "fields":{
+        "full_name":"Sensefly Drones Inc",
+        "common_name":"Sensefly",
+        "acronym":"SF",
+        "role":"Manufacturer",
         "country":"IRE"
      }
   },
@@ -165,7 +171,7 @@
         "operator":"41174c3f-e86c-4e5a-a629-32d4d9da6011",
         "type_certificate":"75f358c6-e8d3-46aa-a3de-172bdcea469d",
         "mass":"300",
-        "manufacturer":"DJI",
+        "manufacturer":"6f9cd973-15b9-4066-b4d0-1e8bbd0f279d",
         "make":"Series 2",
         "popular_name":"Parrot 2",
         "model":"Parrot",
@@ -187,7 +193,7 @@
         "type_certificate":"75f358c6-e8d3-46aa-a3de-172bdcea469d",
         "mass":"700",
         "make":"Series 1",
-        "manufacturer":"Sensefly",
+        "manufacturer":"4effcea2-e9d4-4696-891f-52d350d68a9f",
         "model":"eBee",
         "category":1,
         "sub_category":7,
