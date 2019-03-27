@@ -3,7 +3,8 @@
      "model":"registry.activity",
      "pk":"7a875ff9-79ee-460e-816f-30360e0ac645",
      "fields":{
-        "name":"photographing"
+        "name":"photographing",
+        "activity_type":0
      }
   },
   {
@@ -20,11 +21,10 @@
         "title":"SORA",
         "airspace_type":1,
         "permit_to_fly_above_crowd":1,
-        "area_type":1,
         "risk_type":1, 
         "authorization_type":1,
-        "created_at":"2018-09-04T13:20:30+01:00",
-        "updated_at":"2018-09-04T13:20:30+01:00"
+        "operation_max_height":100,     
+        "operation_area_type" :1        
      }
   },
   {
@@ -34,11 +34,10 @@
       "title":"SORA V2",
       "airspace_type":2,
       "permit_to_fly_above_crowd":0,
-      "area_type":1,
       "risk_type":6, 
       "authorization_type":1,
-        "created_at":"2018-09-04T13:20:30+01:00",
-        "updated_at":"2018-09-04T13:20:30+01:00"
+      "operation_max_height":200,    
+      "operation_area_type" :1            
      }
   },
   {
@@ -48,6 +47,10 @@
         "company_name":"A.J. August Photography",
         "website":"august.com",
         "email":"aj@august.com",
+        "common_name":"AJA Photos",
+        "acronym":"EI",
+        "role":"Drone Operator",
+        "country":"IRE",
         "operator_type":"0",
         "phone_number":"+3041112232",
         "address":"Claureen Lahinch rd Ennis",
@@ -71,6 +74,11 @@
      "pk":"566d63bb-cb1c-42dc-9a51-baef0d0a8d04",
      "fields":{
         "company_name":"Electric Inspection",
+        "full_name":"Construcciones Aeronauticas Pvt. Ltd.",
+        "common_name":"EI SA",
+        "acronym":"EI",
+        "role":"Drone Operator",
+        "country":"IRE",
         "website":"electricinspection.com",
         "email":"contact@electricinspection.com",
         "operator_type":"0",
@@ -100,9 +108,13 @@
         "email":"catherine@gmail.com",
         "address":"Malroc House, South Mall",
         "phone_number":"+353416852181",
+        "postcode":"D02PT89",
+        "role_type":"0", 
+        "date_of_birth":"1979-09-12T13:20:30+01:00",
         "social_security_number":"79464412258",
         "created_at":"2018-09-04T13:20:30+01:00",
         "updated_at":"2018-09-04T13:20:30+01:00"
+        
      }
   },
   {
@@ -113,23 +125,54 @@
         "first_name":"Molly",
         "middle_name":"S",
         "last_name":"Storey",
+        "postcode":"D02 DH42",
+        "role_type":"1", 
         "email":"molly@hotmail.com",
         "address":"107  West Lane, DALMICHY",
-        "postcode":"IV273FW",
         "phone_number":"+447037380857",
         "created_at":"2018-09-04T13:20:30+01:00",
         "updated_at":"2018-09-04T13:20:30+01:00"
      }
   },
   {
+     "model":"registry.rpastypecertificate",
+     "pk":"75f358c6-e8d3-46aa-a3de-172bdcea469d",
+     "fields":{
+        "type_certificate_id":"1dc42b2a-7e3f-4e87-b23d-353ec8a06705",
+        "type_certificate_issuing_country":"IRE",
+        "type_certificate_holder":"Agro Products Inc.",
+        "type_certificate_holder_country":"IRE"
+     }
+  },
+
+  
+  {
+     "model":"registry.organization",
+     "pk":"6f9cd973-15b9-4066-b4d0-1e8bbd0f279d",
+     "fields":{
+        "full_name":"1dc42b2a-7e3f-4e87-b23d-353ec8a06705",
+        "common_name":"IRE",
+        "acronym":"Agro Products Inc.",
+        "role":"IRE",
+        "country":"IRE"
+     }
+  },
+  
+  {
      "model":"registry.rpas",
      "pk":"0797d9ef-02d9-41cf-93ff-439aaf1609ae",
      "fields":{
         "operator":"41174c3f-e86c-4e5a-a629-32d4d9da6011",
+        "type_certificate":"75f358c6-e8d3-46aa-a3de-172bdcea469d",
         "mass":"300",
         "manufacturer":"DJI",
+        "make":"Series 2",
+        "popular_name":"Parrot 2",
         "model":"Parrot",
+        "category":1,
+        "sub_category":7,
         "is_airworthy":1, 
+        "icao_aircraft_type_designator":"HS20",
         "esn":"4D4652310000000000000000313233343436373839414243",
         "maci_number":"86ac-42dc-8d19",
         "created_at":"2018-09-04T13:20:30+01:00",
@@ -141,10 +184,15 @@
      "pk":"0450852f-856e-4ecb-beb6-01ccded8529d",
      "fields":{
         "operator":"566d63bb-cb1c-42dc-9a51-baef0d0a8d04",
+        "type_certificate":"75f358c6-e8d3-46aa-a3de-172bdcea469d",
         "mass":"700",
+        "make":"Series 1",
         "manufacturer":"Sensefly",
         "model":"eBee",
-        "is_airworthy":1, 
+        "category":1,
+        "sub_category":7,
+        "is_airworthy":1,         
+        "icao_aircraft_type_designator":"STRM",
         "esn":"5G6532640000000000000000823050083171098833641055",
         "maci_number":"eb30-4fb4-b12d",
         "created_at":"2018-09-04T13:20:30+01:00",

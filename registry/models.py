@@ -11,7 +11,7 @@ from django.core.validators import RegexValidator
 
 # Create your models here.
 class Activity(models.Model):
-    ACTIVITYTYPE_CHOICES = ((0, _('NA')),(1, _('Open')),(2, _('Specific')),(3, _('Specific')),)
+    ACTIVITYTYPE_CHOICES = ((0, _('NA')),(1, _('Open')),(2, _('Specific')),)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=140)
     activity_type = models.IntegerField(choices=ACTIVITYTYPE_CHOICES, default = 0)
@@ -27,12 +27,14 @@ class Authorization(models.Model):
     RISKCLASS_CHOICES = ((0, _('NA')),(1, _('SAIL 1')),(2, _('SAIL 2')),(3, _('SAIL 3')),(4, _('SAIL 4')),(5, _('SAIL 5')),(6, _('SAIL 6')),)
     AUTHTYPE_CHOICES = ((0, _('NA')),(1, _('Light UAS Operator Certificate')),(2, _('Standard Scenario Authorization')),)
     AIRSPACE_CHOICES = ((0, _('NA')),(1, _('Green')),(2, _('Amber')),(3, _('Red')),)
+    ALTITUDE_SYSTEM = ((0, _('wgs84')),(1, _('amsl')),(2, _('agl')),(3, _('sps')),)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=140)
     operation_max_height = models.IntegerField(default = 0)
+    operation_altitude_system = models.IntegerField(default =0)
     airspace_type = models.IntegerField(choices = AIRSPACE_CHOICES, default =0)
     permit_to_fly_above_crowd = models.BooleanField(default = 0)
-    area_type = models.IntegerField(choices=AREATYPE_CHOICES, default = 0)
+    operation_area_type = models.IntegerField(choices=AREATYPE_CHOICES, default = 0)
     risk_type = models.IntegerField(choices= RISKCLASS_CHOICES, default =0)
     authorization_type = models.IntegerField(choices= AUTHTYPE_CHOICES, default =0)
     end_date = models.DateTimeField(default = datetime.combine( date.today() + relativedelta(months=+24), datetime.min.time()).replace(tzinfo=timezone.utc))
@@ -64,6 +66,12 @@ class Operator(models.Model):
     vat_number = models.CharField(max_length=25, blank=True, null=True)
     insurance_number = models.CharField(max_length=25, blank=True, null=True)
     company_number = models.CharField(max_length=25, blank=True, null=True)
+    full_name = models.CharField(max_length = 140)
+    common_name = models.CharField(max_length = 140)
+    acronym = models.CharField(max_length =10)
+    role = models.CharField(max_length = 140)
+    country = models.CharField(max_length =3)
+
 
     def __unicode__(self):
        return self.company_name
@@ -144,12 +152,6 @@ class RpasTypeCertificate(models.Model):
 
 class Organization(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    full_name = models.CharField(max_length = 140)
-    common_name = models.CharField(max_length = 140)
-    acronym = models.CharField(max_length =10)
-    role = models.CharField(max_length = 140)
-    country = models.CharField(max_length =140)
-
 
   
 class Rpas(models.Model):
@@ -160,12 +162,11 @@ class Rpas(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     operator = models.ForeignKey(Operator, models.CASCADE)
     mass = models.IntegerField()
-    is_airworthy = models.BooleanField(default = 0)
-    manufacturer = models.CharField(max_length = 280)    
-    make = models.CharField(max_length = 280)    
-    master_series = models.CharField(max_length = 280)    
-    series = models.CharField(max_length = 280)
-    popular_name = models.CharField(max_length = 280)    
+    is_airworthy = models.BooleanField(default = 0)    
+    make = models.CharField(max_length = 280, blank= True, null=True)    
+    master_series = models.CharField(max_length = 280, blank= True, null=True)    
+    series = models.CharField(max_length = 280, blank= True, null=True)
+    popular_name = models.CharField(max_length = 280, blank= True, null=True)    
     manufacturer = models.ForeignKey(Organization, models.CASCADE)
     category = models.IntegerField(choices=AIRCRAFT_CATEGORY, default = 0)
     sub_category = models.IntegerField(choices=AIRCRAFT_SUB_CATEGORY, default = 7)
