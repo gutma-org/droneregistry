@@ -133,7 +133,6 @@ class Pilot(models.Model):
     date_of_birth = models.DateField(blank=True, null=True)
 
 
-
 class RpasTestValidity(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     test = models.ForeignKey(RpasTest, models.CASCADE)
