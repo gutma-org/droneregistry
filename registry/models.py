@@ -151,7 +151,6 @@ class TypeCertificate(models.Model):
 
 class Manufacturer(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-
     full_name = models.CharField(max_length = 140, default = 'NA')
     common_name = models.CharField(max_length = 140, default = 'NA')
     acronym = models.CharField(max_length =10, default = 'NA')
