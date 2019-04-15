@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from registry.models import Activity, Authorization, Operator, Contact, Rpas, Pilot
+from registry.models import Activity, Authorization, Operator, Contact, Aircraft, Pilot
 
 
 class OperatorSerializer(serializers.ModelSerializer):
@@ -54,18 +54,18 @@ class PilotSerializer(serializers.ModelSerializer):
         model = Pilot
         fields = ('id', 'operator','is_active', 'first_name', 'last_name', 'email','phone_number','updated_at')
 
-class RpasSerializer(serializers.ModelSerializer):
+class AircraftSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Rpas
+        model = Aircraft
         fields = ('id', 'mass', 'manufacturer', 'model','esn','maci_number','status','created_at','updated_at')
         
         
 
-class RpasESNSerializer(serializers.ModelSerializer):
+class AircraftESNSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Rpas
+        model = Aircraft
         fields = ('id', 'mass', 'manufacturer', 'model','esn','maci_number','status','created_at','updated_at')
         lookup_field = 'esn'
         

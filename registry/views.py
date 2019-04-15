@@ -15,10 +15,10 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from registry.models import Activity, Authorization, Contact, Operator, Rpas, Pilot, RpasTest, RpasTestValidity
+from registry.models import Activity, Authorization, Contact, Operator, Aircraft, Pilot, Test, TestValidity
 from registry.serializers import (ContactSerializer, OperatorSerializer, PilotSerializer, 
                                   PrivilagedContactSerializer, PrivilagedPilotSerializer,
-                                  PrivilagedOperatorSerializer, RpasSerializer, RpasESNSerializer)
+                                  PrivilagedOperatorSerializer, AircraftSerializer, AircraftESNSerializer)
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from six.moves.urllib import request as req
@@ -161,8 +161,8 @@ class OperatorRpas(mixins.RetrieveModelMixin,
 	# authentication_classes = (SessionAuthentication,TokenAuthentication)
 	# permission_classes = (IsAuthenticated,)
 
-	queryset = Rpas.objects.all()
-	serializer_class = RpasSerializer
+	queryset = Aircraft.objects.all()
+	serializer_class = AircraftSerializer
 
 	def get_Rpas(self, pk):
 		try:
@@ -174,7 +174,7 @@ class OperatorRpas(mixins.RetrieveModelMixin,
 
 	def get(self, request, pk,format=None):
 		rpas = self.get_Rpas(pk)
-		serializer = RpasSerializer(rpas, many=True)
+		serializer = AircraftSerializer(rpas, many=True)
 
 		return Response(serializer.data)
 
@@ -194,8 +194,8 @@ class OperatorRpas(mixins.RetrieveModelMixin,
 class RpasESNDetails(mixins.RetrieveModelMixin,
                     generics.GenericAPIView):
 
-    queryset = Rpas.objects.all()
-    serializer_class = RpasESNSerializer
+    queryset = Aircraft.objects.all()
+    serializer_class = AircraftESNSerializer
     lookup_field = 'esn'
 	
     def get(self, request, *args, **kwargs):

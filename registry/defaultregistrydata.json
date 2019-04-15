@@ -130,7 +130,7 @@
      }
   },
   {
-     "model":"registry.rpastypecertificate",
+     "model":"registry.typecertificate",
      "pk":"75f358c6-e8d3-46aa-a3de-172bdcea469d",
      "fields":{
         "type_certificate_id":"1dc42b2a-7e3f-4e87-b23d-353ec8a06705",
@@ -165,7 +165,7 @@
   },
   
   {
-     "model":"registry.rpas",
+     "model":"registry.aircraft",
      "pk":"0797d9ef-02d9-41cf-93ff-439aaf1609ae",
      "fields":{
         "operator":"41174c3f-e86c-4e5a-a629-32d4d9da6011",
@@ -186,7 +186,7 @@
      }
   },
   {
-     "model":"registry.rpas",
+     "model":"registry.aircraft",
      "pk":"0450852f-856e-4ecb-beb6-01ccded8529d",
      "fields":{
         "operator":"566d63bb-cb1c-42dc-9a51-baef0d0a8d04",
@@ -206,7 +206,7 @@
      }
   },
   {
-     "model":"registry.rpastest",
+     "model":"registry.test",
      "pk":"da7dae8f-3fea-46b6-9076-fe3735817de9",
      "fields":{
         "test_type":1,
@@ -216,7 +216,7 @@
      }
   },
   {
-     "model":"registry.rpastest",
+     "model":"registry.test",
      "pk":"ad7a73e4-9d11-4d6f-9e4c-36013fc4ac70",
      "fields":{
         "test_type":1,
