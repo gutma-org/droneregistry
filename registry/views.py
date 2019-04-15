@@ -151,7 +151,7 @@ class OperatorDetailPrivilaged(mixins.RetrieveModelMixin,
 
 @api_view(['GET'])
 @requires_scope('read:operator')
-class OperatorRpas(mixins.RetrieveModelMixin,
+class OperatorAircraft(mixins.RetrieveModelMixin,
                     mixins.UpdateModelMixin,    
                     mixins.DestroyModelMixin,
                     generics.GenericAPIView):
@@ -164,17 +164,17 @@ class OperatorRpas(mixins.RetrieveModelMixin,
 	queryset = Aircraft.objects.all()
 	serializer_class = AircraftSerializer
 
-	def get_Rpas(self, pk):
+	def get_Aircraft(self, pk):
 		try:
 			o =  Operator.objects.get(id=pk)
 		except Operator.DoesNotExist:
 			raise Http404
 		else: 
-			return Rpas.objects.filter(operator = o)
+			return Aircraft.objects.filter(operator = o)
 
 	def get(self, request, pk,format=None):
-		rpas = self.get_Rpas(pk)
-		serializer = AircraftSerializer(rpas, many=True)
+		aircraft = self.get_Aircraft(pk)
+		serializer = AircraftSerializer(aircraft, many=True)
 
 		return Response(serializer.data)
 
@@ -191,7 +191,7 @@ class OperatorRpas(mixins.RetrieveModelMixin,
 
 @api_view(['GET'])
 @requires_scope('read:operator')
-class RpasESNDetails(mixins.RetrieveModelMixin,
+class AircraftESNDetails(mixins.RetrieveModelMixin,
                     generics.GenericAPIView):
 
     queryset = Aircraft.objects.all()
