@@ -1,7 +1,7 @@
 FORMAT: 1A
 HOST: https://www.caa.com/api/v1
 
-# UAS Registration API
+# Aircraft Registration API
 
 This API exposes registration data and additional functionalities to enable developers and interested parties build applications and tools that utilize the data in the registry. The API is JSON-rest based and uses standard HTTP response codes to indicate API errors and successes.
 
@@ -624,9 +624,9 @@ Updates a pilot entry in the operator database with modified details.
             }
  
 
-## Group RPAS API
+## Group Aircraft API
 
-## Equipment registered by a Operator [/operators/{operatorid}/rpas/]
+## Equipment registered by a Operator [/operators/{operatorid}/aircraft/]
 
 ### List equipment registered [GET]
 Returns a list of all the equipment active and inactive that are registered by the operator
@@ -668,8 +668,8 @@ Returns a list of all the equipment active and inactive that are registered by t
         }
 
 
-### Add a new RPAS equipment [POST]
-Add a new RPAS assigned to the operator
+### Add a new Aircraft equipment [POST]
+Add a new Aircraft assigned to the operator
 
 + Parameters
     + operatorid: 4f140e59-98c3-4bc2-bf30-eec982c132ad (string) - The ID of a operator in the form of an string
@@ -720,14 +720,14 @@ Add a new RPAS assigned to the operator
               "equipment_id": "26bc3e7710ea"
             }
     
-## Update registered equipment [/operators/{operatorid}/rpas/update/{rpasid}]
+## Update registered equipment [/operators/{operatorid}/aircraft/update/{aircraftid}]
 
-### Update a existing RPAS Detail [POST]
+### Update a existing Aircraft Detail [POST]
 Updates a entry in the operator database with modified details. 
 
 + Parameters
     + operatorid: 4f140e59-98c3-4bc2-bf30-eec982c132ad (string) - The ID of a operator in the form of an string
-    + rpasid: 26bc3e7710ea (string) - The ID of a operator in the form of an string
+    + aircraftid: 26bc3e7710ea (string) - The ID of a operator in the form of an string
     
 + Request (application/json)
     + Headers
@@ -780,13 +780,13 @@ Updates a entry in the operator database with modified details.
 
 
 
-## Single RPAS Details [/rpas/{rpasid}]
+## Single Aircraft Details [/aircraft/{aircraftid}]
 
-### Get a single RPAS [GET]
-Get information about a RPAS by looking up its ESN
+### Get a single Aircraft [GET]
+Get information about a Aircraft by looking up its ESN
 
 + Parameters
-    + rpasid: 4D4652310000000000000000313233343436373839414243 (string) - ESN of RPAS, ESN = [Manufacturer’s Code] [Serial Number] [IMEISV] [Performative Characteristics]
+    + aircraftid: 4D4652310000000000000000313233343436373839414243 (string) - ESN of Aircraft, ESN = [Manufacturer’s Code] [Serial Number] [IMEISV] [Performative Characteristics]
 
     
 + Request (application/json)
