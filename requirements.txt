@@ -6,3 +6,4 @@ python-dateutil
 psycopg2-binary
 gunicorn
 cryptography
+django-extensions
