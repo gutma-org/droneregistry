@@ -1,258 +1,341 @@
-[
-  {
-     "model":"registry.activity",
-     "pk":"7a875ff9-79ee-460e-816f-30360e0ac645",
-     "fields":{
-        "name":"photographing"
-        
-     }
-  },
-  {
-     "model":"registry.activity",
-     "pk":"26b6a66d-5e77-4a43-94e9-630e141a1087",
-     "fields":{
-        "name":"videotaping"
-     }
-  },
-  {
-     "model":"registry.authorization",
-     "pk":"e7bfa98c-8e4f-40bd-b42f-62fd3651d7da",
-     "fields":{
-        "title":"SORA",
-        "airspace_type":1,
-        "permit_to_fly_above_crowd":1,
-        "risk_type":1, 
-        "authorization_type":1,
-        "operation_max_height":100,     
-        "operation_area_type" :1,
-        "created_at":"2018-09-04T13:20:30+01:00",
-        "updated_at":"2018-09-04T13:20:30+01:00"  
-     }
-  },
-  {
-     "model":"registry.authorization",
-     "pk":"6be25abc-a43d-44d2-9c16-b8dee47bb64d",
-     "fields":{
-      "title":"SORA V2",
-      "airspace_type":2,
-      "permit_to_fly_above_crowd":0,
-      "risk_type":6, 
-      "authorization_type":1,
-      "operation_max_height":200,    
-      "operation_area_type" :1,  
-      "created_at":"2018-09-04T13:20:30+01:00",
-      "updated_at":"2018-09-04T13:20:30+01:00"      
-     }
-  },
-  {
-     "model":"registry.operator",
-     "pk":"41174c3f-e86c-4e5a-a629-32d4d9da6011",
-     "fields":{
-        "company_name":"A.J. August Photography",
-        "website":"august.com",
-        "email":"aj@august.com",
-        "operator_type":"0",
-        "phone_number":"+3041112232",
-        "address":"Claureen Lahinch rd Ennis",
-        "postcode":"D02VE22",
-        "city":"Westport",
-        "vat_number":"IE5895475T",
-        "company_number":"489434",
-        "operational_authorizations":[
-           "e7bfa98c-8e4f-40bd-b42f-62fd3651d7da"
-        ],
-        "authorized_activities":[
-           "26b6a66d-5e77-4a43-94e9-630e141a1087",
-           "7a875ff9-79ee-460e-816f-30360e0ac645"
-        ],
-        "created_at":"2018-09-04T13:20:30+01:00",
-        "updated_at":"2018-09-04T13:20:30+01:00"
-     }
-  },
-  {
-     "model":"registry.operator",
-     "pk":"566d63bb-cb1c-42dc-9a51-baef0d0a8d04",
-     "fields":{
-        "company_name":"Electric Inspection",
-        "website":"electricinspection.com",
-        "email":"contact@electricinspection.com",
-        "operator_type":"0",
-        "phone_number":"+4963610678",
-        "address":"Buelowstrasse 98",
-        "postcode":"56753",
-        "company_number":"895884",
-        "insurance_number":"985049991",
-        "city":"Welling",
-        "operational_authorizations":[
-           "6be25abc-a43d-44d2-9c16-b8dee47bb64d"
-        ],
-        "authorized_activities":[
-           "7a875ff9-79ee-460e-816f-30360e0ac645"
-        ],
-        "created_at":"2018-09-04T13:20:30+01:00",
-        "updated_at":"2018-09-04T13:20:30+01:00"
-     }
-  },
-  {
-     "model":"registry.contact",
-     "pk":"c3ae2bb0-19f6-4738-a53b-cdb0acbaf5b1",
-     "fields":{
-        "operator":"41174c3f-e86c-4e5a-a629-32d4d9da6011",
-        "first_name":"Catherine",
-        "last_name":"OConor",
-        "email":"catherine@gmail.com",
-        "address":"Malroc House, South Mall",
-        "phone_number":"+353416852181",
-        "postcode":"D02PT89",
-        "role_type":"0", 
-        "date_of_birth":"1979-09-12",
-        "social_security_number":"79464412258",
-        "created_at":"2018-09-04T13:20:30+01:00",
-        "updated_at":"2018-09-04T13:20:30+01:00"
-        
-     }
-  },
-  {
-     "model":"registry.contact",
-     "pk":"c3ae2bb0-19f6-4738-a53b-cdb0acbaf5b1",
-     "fields":{
-        "operator":"566d63bb-cb1c-42dc-9a51-baef0d0a8d04",
-        "first_name":"Molly",
-        "middle_name":"S",
-        "last_name":"Storey",
-        "postcode":"D02 DH42",
-        "role_type":"1", 
-        "email":"molly@hotmail.com",
-        "address":"107  West Lane, DALMICHY",
-        "phone_number":"+447037380857",
-        "created_at":"2018-09-04T13:20:30+01:00",
-        "updated_at":"2018-09-04T13:20:30+01:00"
-     }
-  },
-  {
-     "model":"registry.typecertificate",
-     "pk":"75f358c6-e8d3-46aa-a3de-172bdcea469d",
-     "fields":{
-        "type_certificate_id":"1dc42b2a-7e3f-4e87-b23d-353ec8a06705",
-        "type_certificate_issuing_country":"IRE",
-        "type_certificate_holder":"Agro Products Inc.",
-        "type_certificate_holder_country":"IRE"
-     }
-  },
+[{
+   "model": "registry.activity",
+   "pk": "7a875ff9-79ee-460e-816f-30360e0ac645",
+   "fields": {
+      "name": "photographing"
 
-  
-  {
-     "model":"registry.manufacturer",
-     "pk":"6f9cd973-15b9-4066-b4d0-1e8bbd0f279d",
-     "fields":{
-        "full_name":"DJI Holdings Inc",
-        "common_name":"DJI",
-        "acronym":"DJI",
-        "role":"Manufacturer",
-        "country":"IRE"
-     }
-  },
-  {
-     "model":"registry.manufacturer",
-     "pk":"4effcea2-e9d4-4696-891f-52d350d68a9f",
-     "fields":{
-        "full_name":"Sensefly Drones Inc",
-        "common_name":"Sensefly",
-        "acronym":"SF",
-        "role":"Manufacturer",
-        "country":"IRE"
-     }
-  },
-  
-  {
-     "model":"registry.aircraft",
-     "pk":"0797d9ef-02d9-41cf-93ff-439aaf1609ae",
-     "fields":{
-        "operator":"41174c3f-e86c-4e5a-a629-32d4d9da6011",
-        "type_certificate":"75f358c6-e8d3-46aa-a3de-172bdcea469d",
-        "mass":"300",
-        "manufacturer":"6f9cd973-15b9-4066-b4d0-1e8bbd0f279d",
-        "make":"Series 2",
-        "popular_name":"Parrot 2",
-        "model":"Parrot",
-        "category":1,
-        "sub_category":7,
-        "is_airworthy":1, 
-        "icao_aircraft_type_designator":"HS20",
-        "esn":"4D4652310000000000000000313233343436373839414243",
-        "maci_number":"86ac-42dc-8d19",
-        "created_at":"2018-09-04T13:20:30+01:00",
-        "updated_at":"2018-09-04T13:20:30+01:00"
-     }
-  },
-  {
-     "model":"registry.aircraft",
-     "pk":"0450852f-856e-4ecb-beb6-01ccded8529d",
-     "fields":{
-        "operator":"566d63bb-cb1c-42dc-9a51-baef0d0a8d04",
-        "type_certificate":"75f358c6-e8d3-46aa-a3de-172bdcea469d",
-        "mass":"700",
-        "make":"Series 1",
-        "manufacturer":"4effcea2-e9d4-4696-891f-52d350d68a9f",
-        "model":"eBee",
-        "category":1,
-        "sub_category":7,
-        "is_airworthy":1,         
-        "icao_aircraft_type_designator":"STRM",
-        "esn":"5G6532640000000000000000823050083171098833641055",
-        "maci_number":"eb30-4fb4-b12d",
-        "created_at":"2018-09-04T13:20:30+01:00",
-        "updated_at":"2018-09-04T13:20:30+01:00"
-     }
-  },
-  {
-     "model":"registry.test",
-     "pk":"da7dae8f-3fea-46b6-9076-fe3735817de9",
-     "fields":{
-        "test_type":1,
-        "name":"RPAS Safety Basics",
-        "created_at":"2018-09-04T13:20:30+01:00",
-        "updated_at":"2018-09-04T13:20:30+01:00"
-     }
-  },
-  {
-     "model":"registry.test",
-     "pk":"ad7a73e4-9d11-4d6f-9e4c-36013fc4ac70",
-     "fields":{
-        "test_type":1,
-        "name":"Advanced RPAS flying in Urban Environments",
-        "created_at":"2018-09-04T13:20:30+01:00",
-        "updated_at":"2018-09-04T13:20:30+01:00"
-     }
-  },
-  {
-     "model":"registry.pilot",
-     "pk":"d4b8aa2c-0a52-4adc-806a-f363deb6a1e0",
-     "fields":{
-        "operator":"566d63bb-cb1c-42dc-9a51-baef0d0a8d04",
-        "first_name":"Mickey",
-        "middle_name":"Richard",
-        "last_name":"Matheny",
-        "is_active":1, 
-        "email":"MickeyRMatheny@teleworm.us",
-        "phone_number":"+499122992107",
-        "created_at":"2018-09-04T13:20:30+01:00",
-        "updated_at":"2018-09-04T13:20:30+01:00"
-     }
-  },
-  {
-     "model":"registry.pilot",
-     "pk":"2f15a395-65a3-4a73-a492-57c7c470d527",
-     "fields":{
-        "operator":"41174c3f-e86c-4e5a-a629-32d4d9da6011",
-        "first_name":"Modesta",
-        "middle_name":"Jeanie",
-        "last_name":"Strauss",
-        "is_active":1, 
-        "email":"dludgrove7@posterous.com",
-        "phone_number":"+499122992107",
-        "created_at":"2018-09-04T13:20:30+01:00",
-        "updated_at":"2018-09-04T13:20:30+01:00"
-     }
-  }
-]
+   }
+},
+{
+   "model": "registry.activity",
+   "pk": "26b6a66d-5e77-4a43-94e9-630e141a1087",
+   "fields": {
+      "name": "videotaping"
+   }
+},
+{
+   "model": "registry.authorization",
+   "pk": "e7bfa98c-8e4f-40bd-b42f-62fd3651d7da",
+   "fields": {
+      "title": "SORA",
+      "airspace_type": 1,
+      "permit_to_fly_above_crowd": 1,
+      "risk_type": 1,
+      "authorization_type": 1,
+      "operation_max_height": 100,
+      "operation_area_type": 1,
+      "created_at": "2018-09-04T13:20:30+01:00",
+      "updated_at": "2018-09-04T13:20:30+01:00"
+   }
+},
+{
+   "model": "registry.authorization",
+   "pk": "6be25abc-a43d-44d2-9c16-b8dee47bb64d",
+   "fields": {
+      "title": "SORA V2",
+      "airspace_type": 2,
+      "permit_to_fly_above_crowd": 0,
+      "risk_type": 6,
+      "authorization_type": 1,
+      "operation_max_height": 200,
+      "operation_area_type": 1,
+      "created_at": "2018-09-04T13:20:30+01:00",
+      "updated_at": "2018-09-04T13:20:30+01:00"
+   }
+},
+{
+   "model": "registry.address",
+   "pk": "8ddda026-2995-44ef-9eab-55e396eaef0d",
+   "fields": {
+      "address_line_1": "Claureen Lahinch rd Ennis",
+      "address_line_2": "",
+      "address_line_3": "",
+      "postcode": "D02VE22",
+      "city": "Westport",
+      "country": "IE"
+   }
+},
+{
+   "model": "registry.address",
+
+   "pk": "72d03da4-a7fb-40f8-a383-f34c1db1c0b0",
+   "fields": {
+      "address_line_1": "Buelowstrasse 98",
+      "address_line_2": "",
+      "address_line_3": "",
+      "postcode": "56753",
+      "city": "Welling",
+      "country": "CH"
+   }
+},
+{
+   "model": "registry.address",
+   "pk": "a7646ce2-f7df-48a9-9ff8-98dfd04794be",
+   "fields": {
+      "address_line_1": "Malroc House, South Mall",
+      "address_line_2": "",
+      "address_line_3": "",
+      "postcode": "D02PT89",
+      "city": "Singapore",
+      "country": "SG"
+   }
+},
+{
+   "model": "registry.address",
+   "pk": "28b2f84c-6798-49b9-9114-97d1d14f49f2",
+   "fields": {
+      "address_line_1": "8 Biscay Rd, Sorrento",
+      "address_line_2": "",
+      "address_line_3": "",
+      "postcode": "NR24 7DZ",
+      "city": "SHARRINGTON",
+      "country": "GB"
+   }
+},
+{
+   "model": "registry.address",
+   "pk": "1888d6a4-166c-47b3-b519-d78a5ca7b25d",
+   "fields": {
+      "address_line_1": "107  West Lane, DALMICHY",
+      "address_line_2": "",
+      "address_line_3": "",
+      "postcode": "D02 DH42",
+      "city": "DALMICHY",
+      "country": "CH"
+   }
+},
+
+{
+   "model": "registry.operator",
+   "pk": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
+   "fields": {
+      "company_name": "A.J. August Photography",
+      "website": "august.com",
+      "email": "aj@august.com",
+      "operator_type": "0",
+      "address": "8ddda026-2995-44ef-9eab-55e396eaef0d",
+      "vat_number": "IE5895475T",
+      "company_number": "489434",
+      "operational_authorizations": [
+         "e7bfa98c-8e4f-40bd-b42f-62fd3651d7da"
+      ],
+      "authorized_activities": [
+         "26b6a66d-5e77-4a43-94e9-630e141a1087",
+         "7a875ff9-79ee-460e-816f-30360e0ac645"
+      ],
+      "created_at": "2018-09-04T13:20:30+01:00",
+      "updated_at": "2018-09-04T13:20:30+01:00"
+   }
+},
+{  
+   "model": "registry.operator",
+   "pk": "566d63bb-cb1c-42dc-9a51-baef0d0a8d04",
+   "fields": {
+      "company_name": "Electric Inspection",
+      "website": "electricinspection.com",
+      "email": "contact@electricinspection.com",
+      "operator_type": "0",
+      "address": "72d03da4-a7fb-40f8-a383-f34c1db1c0b0",
+      "company_number": "895884",
+      "insurance_number": "985049991",
+      "operational_authorizations": [
+         "6be25abc-a43d-44d2-9c16-b8dee47bb64d"
+      ],
+      "authorized_activities": [
+         "7a875ff9-79ee-460e-816f-30360e0ac645"
+      ],
+      "created_at": "2018-09-04T13:20:30+01:00",
+      "updated_at": "2018-09-04T13:20:30+01:00"
+   }
+},
+{
+   "model": "registry.person",
+   "pk": "e61a74c8-7aa4-4dd3-82ba-11b174a44870",
+   "fields": {
+      "first_name": "Catherine",
+      "last_name": "OConor",
+      "email": "catherine@gmail.com",
+      "phone_number": "+353416852181",
+      "date_of_birth": "1979-09-12",
+      "social_security_number": "79464412258"
+   }
+
+},
+{
+   "model": "registry.person",
+   "pk": "a2f3b8b2-183d-44df-9254-83aca26d01c0",
+   "fields": {
+      "first_name": "Molly",
+      "middle_name": "S",
+      "last_name": "Storey",
+      "email": "molly@hotmail.com",
+      "phone_number": "+447037380857"
+   }
+
+},
+{
+   "model": "registry.person",
+   "pk": "32153c3b-663b-41e4-afc2-47127a713704",
+   "fields": {
+      "email": "MickeyRMatheny@teleworm.us",
+      "first_name": "Mickey",
+      "middle_name": "Richard",
+      "last_name": "Matheny",
+      "phone_number": "+3041112232"
+   }
+},
+
+{
+   "model": "registry.person",
+   "pk": "5434e29a-d7e6-4462-ab30-73c7a074915c",
+   "fields": {
+      "first_name": "Modesta",
+      "middle_name": "Jeanie",
+      "last_name": "Strauss",
+      "email": "dludgrove7@posterous.com",
+      "phone_number": "+499122992107"
+   }
+},
+{
+   "model": "registry.contact",
+   "pk": "a7646ce2-f7df-48a9-9ff8-98dfd04794be",
+   "fields": {
+      "operator": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
+      "person": "e61a74c8-7aa4-4dd3-82ba-11b174a44870",
+      "address": "a7646ce2-f7df-48a9-9ff8-98dfd04794be",
+      "role_type": "0",
+      "created_at": "2018-09-04T13:20:30+01:00",
+      "updated_at": "2018-09-04T13:20:30+01:00"
+
+   }
+},
+{
+   "model": "registry.contact",
+   "pk": "c3ae2bb0-19f6-4738-a53b-cdb0acbaf5b1",
+   "fields": {
+      "operator": "566d63bb-cb1c-42dc-9a51-baef0d0a8d04",
+      "person": "a2f3b8b2-183d-44df-9254-83aca26d01c0",
+      "role_type": "1",
+      "address": "1888d6a4-166c-47b3-b519-d78a5ca7b25d",
+      "created_at": "2018-09-04T13:20:30+01:00",
+      "updated_at": "2018-09-04T13:20:30+01:00"
+   }
+},
+{
+   "model": "registry.typecertificate",
+   "pk": "75f358c6-e8d3-46aa-a3de-172bdcea469d",
+   "fields": {
+      "type_certificate_id": "1dc42b2a-7e3f-4e87-b23d-353ec8a06705",
+      "type_certificate_issuing_country": "IRE",
+      "type_certificate_holder": "Agro Products Inc.",
+      "type_certificate_holder_country": "IRE"
+   }
+},
+{
+   "model": "registry.manufacturer",
+   "pk": "6f9cd973-15b9-4066-b4d0-1e8bbd0f279d",
+   "fields": {
+      "full_name": "DJI Holdings Inc",
+      "common_name": "DJI",
+      "acronym": "DJI",
+      "role": "Manufacturer",
+      "country": "IRE"
+   }
+},
+{
+   "model": "registry.manufacturer",
+   "pk": "4effcea2-e9d4-4696-891f-52d350d68a9f",
+   "fields": {
+      "full_name": "Sensefly Drones Inc",
+      "common_name": "Sensefly",
+      "acronym": "SF",
+      "role": "Manufacturer",
+      "country": "IRE"
+   }
+},
+{
+   "model": "registry.aircraft",
+   "pk": "0797d9ef-02d9-41cf-93ff-439aaf1609ae",
+   "fields": {
+      "operator": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
+      "type_certificate": "75f358c6-e8d3-46aa-a3de-172bdcea469d",
+      "mass": "300",
+      "manufacturer": "6f9cd973-15b9-4066-b4d0-1e8bbd0f279d",
+      "make": "Series 2",
+      "popular_name": "Parrot 2",
+      "model": "Parrot",
+      "category": 1,
+      "sub_category": 7,
+      "is_airworthy": 1,
+      "icao_aircraft_type_designator": "HS20",
+      "esn": "4D4652310000000000000000313233343436373839414243",
+      "maci_number": "86ac-42dc-8d19",
+      "created_at": "2018-09-04T13:20:30+01:00",
+      "updated_at": "2018-09-04T13:20:30+01:00"
+   }
+},
+{
+   "model": "registry.aircraft",
+   "pk": "0450852f-856e-4ecb-beb6-01ccded8529d",
+   "fields": {
+      "operator": "566d63bb-cb1c-42dc-9a51-baef0d0a8d04",
+      "type_certificate": "75f358c6-e8d3-46aa-a3de-172bdcea469d",
+      "mass": "700",
+      "make": "Series 1",
+      "manufacturer": "4effcea2-e9d4-4696-891f-52d350d68a9f",
+      "model": "eBee",
+      "category": 1,
+      "sub_category": 7,
+      "is_airworthy": 1,
+      "icao_aircraft_type_designator": "STRM",
+      "esn": "5G6532640000000000000000823050083171098833641055",
+      "maci_number": "eb30-4fb4-b12d",
+      "created_at": "2018-09-04T13:20:30+01:00",
+      "updated_at": "2018-09-04T13:20:30+01:00"
+   }
+},
+{
+   "model": "registry.test",
+   "pk": "da7dae8f-3fea-46b6-9076-fe3735817de9",
+   "fields": {
+      "test_type": 1,
+      "name": "RPAS Safety Basics",
+      "created_at": "2018-09-04T13:20:30+01:00",
+      "updated_at": "2018-09-04T13:20:30+01:00"
+   }
+},
+{
+   "model": "registry.test",
+   "pk": "ad7a73e4-9d11-4d6f-9e4c-36013fc4ac70",
+   "fields": {
+      "test_type": 1,
+      "name": "Advanced RPAS flying in Urban Environments",
+      "created_at": "2018-09-04T13:20:30+01:00",
+      "updated_at": "2018-09-04T13:20:30+01:00"
+   }
+},
+{
+   "model": "registry.pilot",
+   "pk": "d4b8aa2c-0a52-4adc-806a-f363deb6a1e0",
+   "fields": {
+      "operator": "566d63bb-cb1c-42dc-9a51-baef0d0a8d04",
+      "is_active": 1,
+      "person": "32153c3b-663b-41e4-afc2-47127a713704",
+      "address": "28b2f84c-6798-49b9-9114-97d1d14f49f2",
+      "created_at": "2018-09-04T13:20:30+01:00",
+      "updated_at": "2018-09-04T13:20:30+01:00"
+   }
+},
+{
+   "model": "registry.pilot",
+   "pk": "2f15a395-65a3-4a73-a492-57c7c470d527",
+   "fields": {
+      "operator": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
+      "person": "5434e29a-d7e6-4462-ab30-73c7a074915c",
+      "is_active": 1,
+      "address": "1888d6a4-166c-47b3-b519-d78a5ca7b25d",
+      "created_at": "2018-09-04T13:20:30+01:00",
+      "updated_at": "2018-09-04T13:20:30+01:00"
+   }
+}
+]  
