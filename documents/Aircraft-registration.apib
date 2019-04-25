@@ -24,6 +24,153 @@ The API system throttles reqests to 1000 per hour for a particular token after w
 #### Response Codes
 The API uses standard HTTP response codes to communicate the status of the request. In general, 2xx codes signify success and 4xx codes signify failure, and these codes are generally associated with an invalid parameter being provided in the request. A 5xx code is a general server failure on our side. Please contact our support team if you encounter 5xx errors. Please refer to the Wikipedia page on [HTTP request codes](https://www.wikipedia.org/HTTP_Respose_Codes/) for more information 
 
+
+## Group Person and Address API
+Resources related to adding person and addresses in the API
+
+
+## Add a new Person [/person/add/]
+
+### Add new person [POST]
+Adds a new person (Contact or Pilot) to the database
+
++ Request (application/json)
+    + Headers
+
+            Authorization: Token ABC123
+            
+    + Body
+
+            {
+              "first_name": "Jeanie",
+              "middle_name": "",
+              "last_name": "Modesta",
+              "email": "dludgrove7@posterous.com", 
+              "phone_number": "+499122992107", 
+              "identification_number": "IE7847623905F", 
+              "social_security_number": "THG033GE", 
+              "date_of_birth": "27-02-1989"
+            }
+
+    + Schema
+
+            {
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "type": "object",
+              "properties": {
+                "first_name": {
+                  "type": "string"
+                },
+                "middle_name": {
+                  "type": "string"
+                },
+                "last_name": {
+                  "type": "number"
+                },
+                "email": {
+                  "type": "number"
+                },
+                "phone_number": {
+                  "type": "string"
+                },
+                "identification_number": {
+                  "type": "string"
+                },
+                "social_security_number": {
+                  "type": "string"
+                },
+                "date_of_birth": {
+                  "type": "string"
+                }
+                  "minItems": 1
+                }
+              }
+            }
+            
++ Response 200 (application/json)
+
+            {
+              "id": "e9e5a30b-00f5-4bd4-b07b-c8fa3a85fb17",
+              "first_name": "Jeanie",
+              "middle_name": "",
+              "last_name": "Modesta",
+              "email": "dludgrove7@posterous.com", 
+              "phone_number": "+499122992107", 
+              "identification_number": "IE7847623905F", 
+              "social_security_number": "THG033GE", 
+              "date_of_birth": "27-02-1989",
+              "created_at": "2018-03-03T18:58:10Z",
+              "updated_at": "2018-03-03T18:58:10Z"
+            }
+              
+
+
+## Add a new Address [/address/add/]
+
+### Add new address [POST]
+Adds a entry in the address database
+
++ Request (application/json)
+    + Headers
+
+            Authorization: Token ABC123
+            
+    + Body
+
+            {
+              "address_line_1": "107  West Lane, DALMICHY",
+              "address_line_2": "",
+              "address_line_3": "", 
+              "postcode": "D02 DH42", 
+              "city": "SHARRINGTON", 
+              "country": "GB", 
+            }
+
+    + Schema
+
+            {
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "type": "object",
+              "properties": {
+                "address_line_1": {
+                  "type": "string"
+                },
+                "address_line_2": {
+                  "type": "string"
+                },
+                "address_line_3": {
+                  "type": "string"
+                },
+                "postcode": {
+                  "type": "string"
+                },
+                "city": {
+                  "type": "string"
+                },
+                "country": {
+                  "type": "string"
+                },
+                  "minItems": 1
+                }
+              }
+            }
+            
++ Response 200 (application/json)
+
+            {
+              "id":"cbe99049-4b39-4410-b46a-d07f045e1bdc",
+              "address_line_1": "107  West Lane, DALMICHY",
+              "address_line_2": "",
+              "address_line_3": "", 
+              "postcode": "D02 DH42", 
+              "city": "SHARRINGTON", 
+              "country": "GB", 
+              "created_at": "2018-03-03T18:58:10Z",
+              "updated_at": "2018-03-03T18:58:10Z"
+            }
+              
+
+
 ## Group Operator API
 Resources related to Operator Registration in the API
 
@@ -44,15 +191,13 @@ Adds a entry in the operator database
               "website": "aalto.fi",
               "email": "mikko.raskinen@aalto.fi", 
               "telephone": "0505270032", 
-              "address": "Otakaari 24", 
-              "postcode": "02150", 
-              "city": "espoo",
+              "address": "6249a5b0-d052-499e-8bcc-0c1f49e7b3b6", 
               "type":"open",
-              "contact_name":"John Smith",
               "operational_authorizations": ["SORA"],
               "authorized_applications": ["Photographing, videotaping","Press, media","Inspection of buildings or roofs","Inspection of other constructions, e.g. bridges","Measurement of mobile phone networks or other telecommunication networks","RPAS flight training"],
               "vat_number":"DE5396483F",
               "company_number":"45321",
+              "country":"GB"
               "insurance_number":"349453EF"
             }
 
@@ -77,16 +222,10 @@ Adds a entry in the operator database
                 "address": {
                   "type": "string"
                 },
-                "city": {
-                  "type": "string"
-                },
                 "email": {
                   "type": "string"
                 },
                 "type": {
-                  "type": "string"
-                },
-                "contact_name": {
                   "type": "string"
                 },
                 "vat_number": {
@@ -96,6 +235,9 @@ Adds a entry in the operator database
                   "type": "string"
                 },
                 "company_number": {
+                  "type": "string"
+                },
+                "country": {
                   "type": "string"
                 },
                 "operational_authorizations": {
@@ -157,7 +299,6 @@ Returns a list of operators in the registry
             "id": "4f140e59-98c3-4bc2-bf30-eec982c132ad",
             "companyname": "1000 feet Oy",
             "postcode": "01370",
-            "registered": "2018-05-31",
             "exipration": "2021-05-31",
             "created_at": "2018-03-03T18:58:10Z",
             "updated_at": "2018-03-03T18:58:10Z"
@@ -199,12 +340,11 @@ Returns all the details of a single operator available in the database. The oper
     + Body
 
             {
-                "id": "4f140e59-98c3-4bc2-bf30-eec982c132ad",
-                "company_name": "Aalto-korkeakoulusäätiö",
-                "email": "mikko.raskinen@aalto.fi",
-                "website": "aalto.fi",
-                "created_at": "2011-04-10T20:09:31Z",
-                "updated_at": "2014-03-03T18:58:10Z"
+                "id": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
+                "company_name": "A.J. August Photography",
+                "website": "august.com",
+                "email": "aj@august.com",
+                "phone_number": "+497221816880"
             }
 
 ## Privilaged Single Operator Details [/operators/{operatorid}/privilaged/]
@@ -236,22 +376,32 @@ This is a privilaged request made by a interested party that has special access 
     + Body
 
             {
-                "id": "4f140e59-98c3-4bc2-bf30-eec982c132ad",
-                "company_name": "Aalto-korkeakoulusäätiö",
-                "website": "aalto.fi",
-                "email": "mikko.raskinen@aalto.fi",
-                "telephone": "0505270032", 
-                "address": "Otakaari 24", 
-                "postcode": "02150", 
-                "city": "espoo",
-                "registered": "2018-05-31T20:09:31Z",
-                "exipration": "2021-05-31T20:09:31Z",
-                "authorized_applications": ["Photographing, videotaping","Press, media","Inspection of buildings or roofs","Inspection of other constructions, e.g. bridges","Measurement of mobile phone networks or other telecommunication networks","RPAS flight training"],
-                "vat_number":"DE5396483F",
-                "company_number":"45321",
-                "insurance_number":"349453EF",   
+                "id": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
+                "company_name": "A.J. August Photography",
+                "website": "august.com",
+                "email": "aj@august.com",
+                "operator_type": 0,
+                "address": {
+                    "id": "8ddda026-2995-44ef-9eab-55e396eaef0d",
+                    "address_line_1": "Claureen Lahinch rd Ennis",
+                    "address_line_2": "",
+                    "address_line_3": "",
+                    "postcode": "D02VE22",
+                    "city": "Westport",
+                    "country": "IE",
+                    "created_at": "2019-04-25T10:02:33.691494Z",
+                    "updated_at": "2019-04-25T10:02:33.715107Z"
+                },
+                "operational_authorizations": [
+                    "SORA"
+                ],
+                "authorized_activities": [
+                    "videotaping",
+                    "photographing"
+                ],
+                "created_at": "2018-09-04T12:20:30Z",
+                "updated_at": "2018-09-04T12:20:30Z"
             }
-
 
 ## Update Existing Operator Details [/operators/update/{operatorid}/]
 
@@ -269,8 +419,7 @@ Updates a entry in the operator database with modified details.
     + Body
 
             {
-              "city": "Helsinki"
-              "address": "P.O. Box 11000, FI-00076 AALTO"
+              "insurance_number": "20T3VG"
             }
 
     + Schema
@@ -291,19 +440,10 @@ Updates a entry in the operator database with modified details.
                 "postcode": {
                   "type": "number"
                 },
-                "address": {
-                  "type": "string"
-                },
-                "city": {
-                  "type": "string"
-                },
                 "email": {
                   "type": "string"
                 },
                 "type": {
-                  "type": "string"
-                },
-                "contact_name": {
                   "type": "string"
                 },
                 "vat_number": {
@@ -335,21 +475,11 @@ Updates a entry in the operator database with modified details.
 + Response 200 (application/json)
 
             {
-              "id": "4f140e59-98c3-4bc2-bf30-eec982c132ad",
-              "company_name": "Aalto-korkeakoulusäätiö",
-              "website": "aalto.fi",
-              "email": "mikko.raskinen@aalto.fi", 
-              "telephone": "0505270032", 
-              "address": "P.O. Box 11000, FI-00076 AALTO", 
-              "postcode": "02150", 
-              "city": "Helsinki",
-              "operator_type":"open",
-              "contact_name":"John Smith",
-              "contact_id":"9921-181-987", 
-              "operational_authorizations": ["SORA"],
-              "authorized_applications": ["Photographing, videotaping","Press, media","Inspection of buildings or roofs","Inspection of other constructions, e.g. bridges","Measurement of mobile phone networks or other telecommunication networks","RPAS flight training"],"vat_number":"DE5396483F",
-              "company_number":"45321",
-              "insurance_number":"349453EF",  
+                "id": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
+                "company_name": "A.J. August Photography",
+                "website": "august.com",
+                "email": "aj@august.com",
+                "phone_number": "+497221816880"
             }
               
 
@@ -370,25 +500,47 @@ Returns a list of contact people in the registry
 + Response 200 (application/json)
         
         [
-          {
-            "id": "4f140e59-98c3-4bc2-bf30-eec982c132ad",
-            "company_name": "1000 feet Oy",
-            "contact_name":"John Smith",
-            
-            "operator_id" "4f140e59-98c3-4bc2-bf30-eec982c132ad",
-            "created_at": "2018-03-03T18:58:10Z",
-            "updated_at": "2018-03-03T18:58:10Z"
-          },
-          {
-            "id": "4f140e59-98c3-4bc2-bf30-eec982c132ad",
-            "company_name": "Aalto-korkeakoulusäätiö",
-            "postcode": "02150",
-            "created_at": "2018-03-03T18:58:10Z",
-            "updated_at": "2018-03-03T18:58:10Z"
-          }
+            {
+                "id": "a7646ce2-f7df-48a9-9ff8-98dfd04794be",
+                "operator": {
+                    "id": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
+                    "company_name": "A.J. August Photography",
+                    "website": "august.com",
+                    "email": "aj@august.com",
+                    "phone_number": "+497221816880"
+                },
+                "person": {
+                    "id": "e61a74c8-7aa4-4dd3-82ba-11b174a44870",
+                    "first_name": "Catherine",
+                    "middle_name": null,
+                    "last_name": "OConor",
+                    "email": "catherine@gmail.com",
+                    "created_at": "2019-04-25T10:02:33.734983Z",
+                    "updated_at": "2019-04-25T10:02:33.740987Z"
+                },
+                "updated_at": "2018-09-04T12:20:30Z"
+            },
+            {
+                "id": "c3ae2bb0-19f6-4738-a53b-cdb0acbaf5b1",
+                "operator": {
+                    "id": "566d63bb-cb1c-42dc-9a51-baef0d0a8d04",
+                    "company_name": "Electric Inspection",
+                    "website": "electricinspection.com",
+                    "email": "contact@electricinspection.com",
+                    "phone_number": "+4930292487"
+                },
+                "person": {
+                    "id": "a2f3b8b2-183d-44df-9254-83aca26d01c0",
+                    "first_name": "Molly",
+                    "middle_name": "S",
+                    "last_name": "Storey",
+                    "email": "molly@hotmail.com",
+                    "created_at": "2019-04-25T10:02:33.734983Z",
+                    "updated_at": "2019-04-25T10:02:33.740987Z"
+                },
+                "updated_at": "2018-09-04T12:20:30Z"
+            }
         ]
-
-
 
 ## Single Contact Details [/contacts/{contactid}/]
 
@@ -396,7 +548,7 @@ Returns a list of contact people in the registry
 Returns all the details of a single contact and basic information about the contact person available in the database. The contact id is the unique ID assoicated with a contact person for the operator that is in the form of a uuid.
 
 + Parameters
-    + contactid: 4f140e59-98c3-4bc2-bf30-eec982c132ad (string) - The ID of a contact person for a operator in the form of an string
+    + contactid: 4f140e59-98c3-4bc2-bf30-eec982c132ad (string, required) - The ID of a contact person for a operator in the form of an string
     
 + Request (application/json)
     + Headers
@@ -413,21 +565,30 @@ Returns all the details of a single contact and basic information about the cont
 
             A valid email address per [IETF](https://tools.ietf.org/html/rfc5322)
             
-        + website: aalto.fi (string) - Web address of operator
+        
 
     + Body
 
             {
-                "id": "4f140e59-98c3-4bc2-bf30-eec982c132ad",
-                "company_name": "Aalto-korkeakoulusäätiö",
-                "email": "mikko.raskinen@aalto.fi",
-                "contact_name":"John Smith",
-                "website": "aalto.fi",
-                "created_at": "2011-04-10T20:09:31Z",
-                "updated_at": "2014-03-03T18:58:10Z"
+                "id": "a7646ce2-f7df-48a9-9ff8-98dfd04794be",
+                "operator": {
+                    "id": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
+                    "company_name": "A.J. August Photography",
+                    "website": "august.com",
+                    "email": "aj@august.com",
+                    "phone_number": "+497221816880"
+                },
+                "person": {
+                    "id": "e61a74c8-7aa4-4dd3-82ba-11b174a44870",
+                    "first_name": "Catherine",
+                    "middle_name": null,
+                    "last_name": "OConor",
+                    "email": "catherine@gmail.com",
+                    "created_at": "2019-04-25T10:02:33.734983Z",
+                    "updated_at": "2019-04-25T10:02:33.740987Z"
+                },
+                "updated_at": "2018-09-04T12:20:30Z"
             }
-    
-
 
 ## Update Existing Contact Details [/contacts/update/{contactid}/]
 
@@ -435,7 +596,7 @@ Returns all the details of a single contact and basic information about the cont
 Updates a contact point entry in the operator database with modified details. 
 
 + Parameters
-    + contactid: 4f140e59-98c3-4bc2-bf30-eec982c132ad (string) - The ID of a operator in the form of an string
+    + contactid: 4f140e59-98c3-4bc2-bf30-eec982c132ad (string, required) - The ID of a operator in the form of an string
     
 + Request (application/json)
     + Headers
@@ -445,8 +606,7 @@ Updates a contact point entry in the operator database with modified details.
     + Body
 
             {
-              "contact_name": "Jane Doe"
-              "telephone": "1232"
+              "role_type": "1"
             }
 
     + Schema
@@ -455,17 +615,8 @@ Updates a contact point entry in the operator database with modified details.
               "$schema": "http://json-schema.org/draft-07/schema#",
               "type": "object",
               "properties": {
-                "telephone": {
+                "role_type": {
                   "type": "number"
-                },
-                "address": {
-                  "type": "string"
-                },
-                "city": {
-                  "type": "string"
-                },
-                "contact_name": {
-                  "type": "string"
                 }
               }
             }
@@ -473,21 +624,26 @@ Updates a contact point entry in the operator database with modified details.
 + Response 200 (application/json)
 
             {
-              "id": "4f140e59-98c3-4bc2-bf30-eec982c132ad",
-              "company_name": "Aalto-korkeakoulusäätiö",
-              "website": "aalto.fi",
-              "email": "mikko.raskinen@aalto.fi", 
-              "telephone": "1232", 
-              "address": "P.O. Box 11000, FI-00076 AALTO", 
-              "postcode": "02150", 
-              "city": "Helsinki",
-              "operator_type":"open",
-              "contact_name":"Jane Doe",
-              "contact_id":"9921-181-987", 
-              "operational_authorizations": ["SORA"],
-              "authorized_applications": ["Photographing, videotaping","Press, media","Inspection of buildings or roofs","Inspection of other constructions, e.g. bridges","Measurement of mobile phone networks or other telecommunication networks","RPAS flight training"],
+                "id": "a7646ce2-f7df-48a9-9ff8-98dfd04794be",
+                "operator": {
+                    "id": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
+                    "company_name": "A.J. August Photography",
+                    "website": "august.com",
+                    "email": "aj@august.com",
+                    "phone_number": "+497221816880"
+                },
+                "person": {
+                    "id": "e61a74c8-7aa4-4dd3-82ba-11b174a44870",
+                    "first_name": "Catherine",
+                    "middle_name": null,
+                    "last_name": "OConor",
+                    "email": "catherine@gmail.com",
+                    "created_at": "2019-04-25T10:02:33.734983Z",
+                    "updated_at": "2019-04-25T10:02:33.740987Z"
+                },
+                "role_type": 0,
+                "updated_at": "2018-09-04T12:20:30Z"
             }
-
 
 ## Group Pilot API
 Resources related to Contacts with in the Registration in the API
@@ -508,22 +664,44 @@ Returns a list of pilots in the registry
         [
             {
                 "id": "d4b8aa2c-0a52-4adc-806a-f363deb6a1e0",
-                "operator": "566d63bb-cb1c-42dc-9a51-baef0d0a8d04",
+                "operator": {
+                    "id": "566d63bb-cb1c-42dc-9a51-baef0d0a8d04",
+                    "company_name": "Electric Inspection",
+                    "website": "electricinspection.com",
+                    "email": "contact@electricinspection.com",
+                    "phone_number": "+4930292487"
+                },
                 "is_active": true,
-                "first_name": "Mickey",
-                "last_name": "Matheny",
-                "email": "MickeyRMatheny@teleworm.us",
-                "phone_number": "+499122992107",
+                "person": {
+                    "id": "32153c3b-663b-41e4-afc2-47127a713704",
+                    "first_name": "Mickey",
+                    "middle_name": "Richard",
+                    "last_name": "Matheny",
+                    "email": "MickeyRMatheny@teleworm.us",
+                    "created_at": "2019-04-25T10:02:33.734983Z",
+                    "updated_at": "2019-04-25T10:02:33.740987Z"
+                },
                 "updated_at": "2018-09-04T12:20:30Z"
             },
             {
                 "id": "2f15a395-65a3-4a73-a492-57c7c470d527",
-                "operator": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
+                "operator": {
+                    "id": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
+                    "company_name": "A.J. August Photography",
+                    "website": "august.com",
+                    "email": "aj@august.com",
+                    "phone_number": "+497221816880"
+                },
                 "is_active": true,
-                "first_name": "Modesta",
-                "last_name": "Strauss",
-                "email": "dludgrove7@posterous.com",
-                "phone_number": "+499122992107",
+                "person": {
+                    "id": "5434e29a-d7e6-4462-ab30-73c7a074915c",
+                    "first_name": "Modesta",
+                    "middle_name": "Jeanie",
+                    "last_name": "Strauss",
+                    "email": "dludgrove7@posterous.com",
+                    "created_at": "2019-04-25T10:02:33.734983Z",
+                    "updated_at": "2019-04-25T10:02:33.740987Z"
+                },
                 "updated_at": "2018-09-04T12:20:30Z"
             }
         ]
@@ -534,7 +712,7 @@ Returns a list of pilots in the registry
 Returns all the details of a single pilot and basic information about the pilot available in the database. The pilot id is the unique ID assoicated with a pilot for the operator that is in the form of a uuid.
 
 + Parameters
-    + pilotid: 4f140e59-98c3-4bc2-bf30-eec982c132ad (string) - The ID of a pilot for a operator in the form of an string
+    + pilotid: 4f140e59-98c3-4bc2-bf30-eec982c132ad (string, required) - The ID of a pilot for a operator in the form of an string
     
 + Request (application/json)
     + Headers
@@ -556,23 +734,34 @@ Returns all the details of a single pilot and basic information about the pilot 
     + Body
 
             {
-                "id": "2f15a395-65a3-4a73-a492-57c7c470d527",
-                "operator": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
+                "id": "d4b8aa2c-0a52-4adc-806a-f363deb6a1e0",
+                "operator": {
+                    "id": "566d63bb-cb1c-42dc-9a51-baef0d0a8d04",
+                    "company_name": "Electric Inspection",
+                    "website": "electricinspection.com",
+                    "email": "contact@electricinspection.com",
+                    "phone_number": "+4930292487"
+                },
                 "is_active": true,
-                "first_name": "Modesta",
-                "last_name": "Strauss",
-                "email": "dludgrove7@posterous.com",
-                "phone_number": "+499122992107",
+                "person": {
+                    "id": "32153c3b-663b-41e4-afc2-47127a713704",
+                    "first_name": "Mickey",
+                    "middle_name": "Richard",
+                    "last_name": "Matheny",
+                    "email": "MickeyRMatheny@teleworm.us",
+                    "created_at": "2019-04-25T10:02:33.734983Z",
+                    "updated_at": "2019-04-25T10:02:33.740987Z"
+                },
                 "updated_at": "2018-09-04T12:20:30Z"
             }
-
+            
 ## Update Existing Pilot Details [/contacts/update/{pilotid}/]
 
 ### Update pilot details [POST]
 Updates a pilot entry in the operator database with modified details. 
 
 + Parameters
-    + pilotid: 4f140e59-98c3-4bc2-bf30-eec982c132ad (string) - The ID of a pilot in the form of an string
+    + pilotid: 4f140e59-98c3-4bc2-bf30-eec982c132ad (string, required) - The ID of a pilot in the form of an string
     
 + Request (application/json)
     + Headers
@@ -582,7 +771,6 @@ Updates a pilot entry in the operator database with modified details.
     + Body
 
             {
-              "first_name": "Jane",
               "is_active": 1
             }
 
@@ -592,20 +780,8 @@ Updates a pilot entry in the operator database with modified details.
               "$schema": "http://json-schema.org/draft-07/schema#",
               "type": "object",
               "properties": {
-                "first_name": {
-                  "type": "string"
-                },
-                "last_name": {
-                  "type": "string"
-                },
                 "is_active": {
-                  "type": "boolean"
-                },
-                "phone_number": {
-                  "type": "string"
-                },
-                "email": {
-                  "type": "string"
+                  "type": "number"
                 }
               }
             }
@@ -642,31 +818,33 @@ Returns a list of all the equipment active and inactive that are registered by t
             
 + Response 200 (application/json)
 
-        {
+        [
             {
-              "equipment_id": "26bc3e7710ea",
-              "manufacturer": "DJI",
-              "model": "Parrot",
-              "mass": "300",
-              "esn": "4D4652310000000000000000313233343436373839414243",
-              "maci_number": "3d9-23",
-              "status": "active",
-              "created_at": "2011-04-10T20:09:31Z",
-              "updated_at": "2014-03-03T18:58:10Z"
-            },
-            {
-              "equipment_id": "26bc3e7710ea",
-              "manufacturer": "3D Robotics",
-              "model": "MX",
-              "mass": "100",
-              "esn": "5G6532640000000000000000823050083171098833641055",
-              "maci_number": "3d922-23",
-              "status": "inactive",
-              "created_at": "2011-04-10T20:09:31Z",
-              "updated_at": "2014-03-03T18:58:10Z"
+                "id": "0797d9ef-02d9-41cf-93ff-439aaf1609ae",
+                "mass": 300,
+                "manufacturer": "6f9cd973-15b9-4066-b4d0-1e8bbd0f279d",
+                "model": "Parrot",
+                "esn": "4D4652310000000000000000313233343436373839414243",
+                "maci_number": "86ac-42dc-8d19",
+                "status": 1,
+                "registration_mark": null,
+                "sub_category": 7,
+                "type_certificate": {
+                    "id": "75f358c6-e8d3-46aa-a3de-172bdcea469d",
+                    "type_certificate_id": "1dc42b2a-7e3f-4e87-b23d-353ec8a06705",
+                    "type_certificate_issuing_country": "IRE",
+                    "type_certificate_holder": "Agro Products Inc.",
+                    "type_certificate_holder_country": "IRE"
+                },
+                "created_at": "2018-09-04T12:20:30Z",
+                "master_series": null,
+                "series": null,
+                "popular_name": "Parrot 2",
+                "icao_aircraft_type_designator": "HS20",
+                "max_certified_takeoff_weight": "0.000",
+                "updated_at": "2018-09-04T12:20:30Z"
             }
-        }
-
+        ]
 
 ### Add a new Aircraft equipment [POST]
 Add a new Aircraft assigned to the operator

@@ -111,6 +111,7 @@
    "fields": {
       "company_name": "A.J. August Photography",
       "website": "august.com",
+      "phone_number":"+497221816880",
       "email": "aj@august.com",
       "operator_type": "0",
       "address": "8ddda026-2995-44ef-9eab-55e396eaef0d",
@@ -134,6 +135,7 @@
       "company_name": "Electric Inspection",
       "website": "electricinspection.com",
       "email": "contact@electricinspection.com",
+      "phone_number":"+4930292487",
       "operator_type": "0",
       "address": "72d03da4-a7fb-40f8-a383-f34c1db1c0b0",
       "company_number": "895884",

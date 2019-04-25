@@ -1,19 +1,46 @@
 from rest_framework import serializers
-from registry.models import Activity, Authorization, Operator, Contact, Aircraft, Pilot
+from registry.models import Activity, Authorization, Operator, Contact, Aircraft, Pilot, Address, Person, Test, TypeCertificate
 
+
+class AddressSerializer(serializers.ModelSerializer):
+
+
+    class Meta:
+        model = Address
+        fields = ('id', 'address_line_1','address_line_2', 'address_line_3', 'postcode','city', 'country','created_at','updated_at')
+
+class TypeCertificateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = TypeCertificate
+        fields = ('id', 'type_certificate_id','type_certificate_issuing_country', 'type_certificate_holder','type_certificate_holder_country', )
+
+class PersonSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Person
+        fields = ('id', 'first_name','middle_name', 'last_name', 'email','created_at','updated_at')
+
+class TestsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Test
+        fields = ('id', 'test_type','taken_at', 'name','created_at','updated_at')
 
 class OperatorSerializer(serializers.ModelSerializer):
     ''' This is the default serializer for Operator '''
     class Meta:
         model = Operator
         fields = ('id', 'company_name', 'website', 'email',
-                  'phone_number', 'address', 'postcode', 'city')
+                  'phone_number', )
 
 
 class PrivilagedOperatorSerializer(serializers.ModelSerializer):
     ''' This is the privilaged serializer for Operator specially for law enforcement and other privilaged operators '''
     authorized_activities = serializers.SerializerMethodField()
     operational_authorizations = serializers.SerializerMethodField()
+    address = AddressSerializer(read_only=True)
+   
     def get_authorized_activities(self, response):
         activities = []
         o = Operator.objects.get(id=response.id)
@@ -30,35 +57,32 @@ class PrivilagedOperatorSerializer(serializers.ModelSerializer):
             authorizations.append(authorization.title)
         return authorizations
 
+
     class Meta:
         model = Operator
-        fields = ('id', 'company_name', 'website', 'email', 'operator_type', 'phone_number', 'address',
-                  'postcode', 'city', 'operational_authorizations', 'authorized_activities', 'created_at', 'updated_at')
+        fields = ('id', 'company_name', 'website', 'email', 'operator_type', 'address', 'operational_authorizations', 'authorized_activities', 'created_at', 'updated_at')
 
 
 class ContactSerializer(serializers.ModelSerializer):
-    contact_id = serializers.SerializerMethodField()
-	
-    def get_contact_id(self, response):
-        c = Contact.objects.get(id=response.id)
-        contact_id = c.id
-        return contact_id
-
+    person = PersonSerializer(read_only=True)
+    operator = OperatorSerializer(read_only=True)
     class Meta:
         model = Contact
-        fields = ('id', 'operator', 'contact_id', 'first_name', 'last_name', 'email','phone_number','address','postcode','city','updated_at')
+        fields = ('id', 'operator','person','role_type', 'updated_at')
 
 class PilotSerializer(serializers.ModelSerializer):
-
+    person = PersonSerializer(read_only=True)
+    operator = OperatorSerializer(read_only=True)
+    tests = TestsSerializer(read_only=True)
     class Meta:
         model = Pilot
-        fields = ('id', 'operator','is_active', 'first_name', 'last_name', 'email','phone_number','updated_at')
+        fields = ('id', 'operator','is_active','tests', 'person','updated_at')
 
 class AircraftSerializer(serializers.ModelSerializer):
-
+    type_certificate = TypeCertificateSerializer(read_only= True)
     class Meta:
         model = Aircraft
-        fields = ('id', 'mass', 'manufacturer', 'model','esn','maci_number','status','created_at','updated_at')
+        fields = ('id', 'mass', 'manufacturer', 'model','esn','maci_number','status','registration_mark', 'sub_category','type_certificate', 'created_at','master_series', 'series','popular_name','manufacturer','registration_mark','sub_category', 'icao_aircraft_type_designator', 'max_certified_takeoff_weight','updated_at')
         
         
 

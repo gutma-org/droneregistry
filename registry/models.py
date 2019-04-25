@@ -21,6 +21,14 @@ class Person(models.Model):
     identification_number = models.CharField(max_length= 20, blank=True, null=True)
     social_security_number = models.CharField(max_length=25, blank=True, null=True)
     date_of_birth = models.DateField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __unicode__(self):
+       return self.first_name +' ' + self.last_name
+
+    def __str__(self):
+        return self.first_name +' ' + self.last_name
 
 
 class Address(models.Model):
@@ -33,6 +41,8 @@ class Address(models.Model):
     postcode = models.CharField(_("post code"), max_length=10, default="0")
     city = models.CharField(max_length=140)
     country = models.CharField(max_length = 2, choices=COUNTRY_CHOICES_ISO3166, default = 'NA')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
 # Create your models here.
@@ -80,6 +90,9 @@ class Operator(models.Model):
     company_name = models.CharField(max_length=280)
     website = models.URLField()
     email = models.EmailField()
+    phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
+    phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True) #        
+    expiration = models.DateTimeField(default = datetime.combine( date.today() + relativedelta(months=+24), datetime.min.time()).replace(tzinfo=timezone.utc))
     operator_type = models.IntegerField(choices=OPTYPE_CHOICES, default = 0)
     address = models.ForeignKey(Address, models.CASCADE)
     operational_authorizations = models.ManyToManyField(Authorization, related_name = 'operational_authorizations')
