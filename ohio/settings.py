@@ -17,8 +17,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 import json
 from six.moves.urllib import request
-from cryptography.x509 import load_pem_x509_certificate
-from cryptography.hazmat.backends import default_backend
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -31,27 +29,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-
-jsonurl = request.urlopen("https://testflight.eu.auth0.com/.well-known/jwks.json")
-jwks = json.loads(jsonurl.read())
-cert = '-----BEGIN CERTIFICATE-----\n' + jwks['keys'][0]['x5c'][0] + '\n-----END CERTIFICATE-----'
-
-certificate = load_pem_x509_certificate(str.encode(cert), default_backend())
-publickey = certificate.public_key()
-
-# Application definition
-
-JWT_AUTH = {
-    'JWT_PAYLOAD_GET_USERNAME_HANDLER':
-        'auth0authorization.user.jwt_get_username_from_payload_handler',
-    'JWT_PUBLIC_KEY': publickey,
-    'JWT_ALGORITHM': 'RS256',
-    'JWT_AUDIENCE': 'https://basic/testflights',
-    'JWT_ISSUER': 'https://testflight.eu.auth0.com/',
-    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
-}
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',

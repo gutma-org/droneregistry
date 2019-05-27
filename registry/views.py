@@ -1,6 +1,6 @@
 import datetime
 import json
-import jwt
+
 from datetime import datetime
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
@@ -22,11 +22,7 @@ from registry.serializers import (ContactSerializer, OperatorSerializer, PilotSe
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from six.moves.urllib import request as req
-from cryptography.x509 import load_pem_x509_certificate
-from cryptography.hazmat.backends import default_backend
 from functools import wraps
-
-
 
 class OperatorList(mixins.ListModelMixin,
 				  generics.GenericAPIView):
