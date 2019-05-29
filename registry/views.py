@@ -17,7 +17,7 @@ from rest_framework.views import APIView
 
 from registry.models import Activity, Authorization, Contact, Operator, Aircraft, Pilot, Test, TestValidity
 from registry.serializers import (ContactSerializer, OperatorSerializer, PilotSerializer, GUTMADemoOperatorSerializer,GUTMADemoAircraftDetailSerializer,
-                                  PrivilagedContactSerializer, PrivilagedPilotSerializer,
+                                  PrivilagedContactSerializer, PrivilagedPilotSerializer,GUTMADemoPilotSerializer,
                                   PrivilagedOperatorSerializer, AircraftSerializer, AircraftESNSerializer)
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
@@ -388,6 +388,30 @@ class PilotDetail(mixins.RetrieveModelMixin,
 	def delete(self, request, *args, **kwargs):
 	    return self.destroy(request, *args, **kwargs)
 
+# @api_view(['GET','POST'])
+# @requires_scope('read:pilot')
+class GutmaDemoPilotDetail(mixins.RetrieveModelMixin,
+                    mixins.UpdateModelMixin,
+                    mixins.DestroyModelMixin,
+                    generics.GenericAPIView):
+	"""
+	Retrieve, update or delete a Pilot instance.
+	"""
+	# authentication_classes = (SessionAuthentication,TokenAuthentication)
+	# permission_classes = (IsAuthenticated,)
+
+	queryset = Pilot.objects.all()
+	serializer_class = GUTMADemoPilotSerializer
+
+	def get(self, request, *args, **kwargs):
+	    return self.retrieve(request, *args, **kwargs)
+
+	def put(self, request, *args, **kwargs):
+	    return self.update(request, *args, **kwargs)
+
+	def delete(self, request, *args, **kwargs):
+	    return self.destroy(request, *args, **kwargs)
+
 
 # @api_view(['GET','POST'])
 # @requires_scope('read:pilot')
@@ -432,11 +456,17 @@ class EquipmentView(TemplateView):
 		context['equipment_id'] = equipment_id
 		return context
 
+class PilotView(TemplateView):
+	template_name ='registry/pilot.html'
+
+	def get_context_data(self, *args, **kwargs):
+		pilot_id = self.kwargs['pk']
+		context = super(PilotView, self).get_context_data(*args, **kwargs)
+		context['pilot_id'] = pilot_id
+		return context
+
 
 class OperatorView(TemplateView):
     template_name ='registry/operator.html'
 
 	
-
-class PersonView(TemplateView):
-    template_name ='registry/person.html'

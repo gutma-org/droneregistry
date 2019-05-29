@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from registry.models import Activity, Authorization, Operator, Contact, Aircraft, Pilot, Address, Person, Test, TypeCertificate, Manufacturer
+from registry.models import Activity, Authorization, Operator, Contact, Aircraft, Pilot, Address, Person, Test, TypeCertificate, Manufacturer, TestValidity
 
 
 class AddressSerializer(serializers.ModelSerializer):
@@ -64,6 +64,27 @@ class TestsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Test
         fields = ('id', 'test_type','taken_at', 'name','created_at','updated_at')
+
+class GutmaDemoTestsSerializer(serializers.ModelSerializer):
+
+    test_type =  serializers.SerializerMethodField()
+    taken_at =  serializers.SerializerMethodField()
+
+    def get_test_type(self, obj):
+        return obj.get_test_type_display()
+    def get_taken_at(self, obj):
+        return obj.get_taken_at_display()
+    class Meta:
+        model = Test
+        fields = ('id', 'test_type','taken_at', 'name')
+
+class GutmaDemoTestsValiditySerializer(serializers.ModelSerializer):
+    
+    tests = GutmaDemoTestsSerializer(read_only=True, many=True)
+    class Meta:
+        model = TestValidity
+        fields = ('id', 'test' ,'name','created_at','updated_at')
+
 
 class OperatorSerializer(serializers.ModelSerializer):
     ''' This is the default serializer for Operator '''
@@ -186,6 +207,26 @@ class PilotSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pilot
         fields = ('id', 'operator','is_active','tests', 'person','updated_at')
+
+class GUTMADemoPilotSerializer(serializers.ModelSerializer):
+    person = PersonSerializer(read_only=True)
+    address = AddressSerializer(read_only=True)
+    operator = OperatorSerializer(read_only=True)
+    tests = serializers.SerializerMethodField()
+    def get_tests(self, response):
+        p = Pilot.objects.get(id=response.id)
+        tests_validity = TestValidity.objects.filter(pilot=p)
+        all_tests = []
+        for cur_test_validity in tests_validity:
+            test_serializer = GutmaDemoTestsSerializer(cur_test_validity.test)
+            all_tests.append({'expiration': cur_test_validity.expiration, 'test_details': test_serializer.data})
+        return all_tests
+
+    class Meta:
+        model = Pilot
+        fields = ('id', 'operator','is_active','tests', 'address', 'person','updated_at','created_at')
+
+
 
 class AircraftSerializer(serializers.ModelSerializer):
     type_certificate = TypeCertificateSerializer(read_only= True)

@@ -176,7 +176,7 @@
    "fields": {
       "type_certificate_id": "1dc42b2a-7e3f-4e87-b23d-353ec8a06705",
       "type_certificate_issuing_country": "USA",
-      "type_certificate_holder": "Whiskey Tango Fox LLC",
+      "type_certificate_holder": "Cirrus Design Corporation, 4515 Taylor Circle, Duluth, MN 55811",
       "type_certificate_holder_country": "USA"
    }
 },
@@ -233,7 +233,6 @@
    "pk": "0450852f-856e-4ecb-beb6-01ccded8529d",
    "fields": {
       "operator": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
-      "type_certificate": "75f358c6-e8d3-46aa-a3de-172bdcea469d",
       "mass": "700",
       "make": "Mavic 2",
       "popular_name": "DJI Mavic 2",
@@ -279,10 +278,6 @@
       "is_active": 1,
       "person": "e61a74c8-7aa4-4dd3-82ba-11b174a44870",
       "address": "8ddda026-2995-44ef-9eab-55e396eaef0d",
-      "tests": [
-         "ad7a73e4-9d11-4d6f-9e4c-36013fc4ac70",
-         "da7dae8f-3fea-46b6-9076-fe3735817de9"
-      ],
       "created_at": "2018-09-04T13:20:30+01:00",
       "updated_at": "2018-09-04T13:20:30+01:00"
    }

@@ -279,7 +279,7 @@
 		var pilot_address = pilot['address_line_1'] +' '+ pilot['postcode'] + ' '+ pilot['city']+' '+ pilot['country'];	
 		var pilot_name_td = $("<td/>").html(pilot_first_name_last_name+ '<br>'+ pilot_address).appendTo(pilot_row);
 				
-		var pilot_details_td = $("<td/>").html("<a href='/persons/"+pilot['id']+"'"+'">details</a>').appendTo(pilot_row);
+		var pilot_details_td = $("<td/>").html("<a href='/pilots/"+pilot['id']+"'"+'">details</a>').appendTo(pilot_row);
 		
 		}
 
