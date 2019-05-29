@@ -27,19 +27,25 @@ admin.autodiscover()
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', registryviews.HomeView.as_view()),
+    path('operators/<uuid:pk>', registryviews.OperatorView.as_view()),
+    path('persons/<uuid:pk>', registryviews.PersonView.as_view()),
+    path('aircraft/<uuid:pk>', registryviews.EquipmentView.as_view()),
     path('api/v1/', registryviews.APIView.as_view()),
     path('api/v1/operators', registryviews.OperatorList.as_view()),
     path('api/v1/operators/<uuid:pk>', registryviews.OperatorDetail.as_view()),
     path('api/v1/operators/<uuid:pk>/privilaged', registryviews.OperatorDetailPrivilaged.as_view()),
-    path('api/v1/operators/<uuid:pk>/rpas', registryviews.OperatorAircraft.as_view()),
-    path('api/v1/aircraft/<esn>', registryviews.AircraftESNDetails.as_view()),
-    path('api/v1/contacts', registryviews.ContactList.as_view()),
-    path('api/v1/contacts/<uuid:pk>', registryviews.ContactDetail.as_view()),
+    path('api/v1/operators/<uuid:pk>/gutma-demo', registryviews.GUTMADemoOperator.as_view()),
+    path('api/v1/operators/<uuid:pk>/rpas', registryviews.OperatorAircraft),
+    path('api/v1/aircraft/<esn>', registryviews.AircraftESNDetails),    
+    path('api/v1/aircraft/<uuid:pk>/gutma-demo', registryviews.GUTMADemoAircraft.as_view()),
+    path('api/v1/contacts', registryviews.ContactList),
+    path('api/v1/contacts/<uuid:pk>', registryviews.ContactDetail),
     path('api/v1/contacts/<uuid:pk>/privilaged', registryviews.ContactDetailPrivilaged),
-    path('api/v1/operators/<uuid:pk>/aircraft', registryviews.OperatorAircraft.as_view()),
-    path('api/v1/pilots', registryviews.PilotList.as_view()),
-    path('api/v1/pilots/<uuid:pk>', registryviews.PilotDetail.as_view()),
-    path('api/v1/pilots/<uuid:pk>/privilaged', registryviews.PilotDetailPrivilaged.as_view()),
+    path('api/v1/operators/<uuid:pk>/aircraft', registryviews.OperatorAircraft),
+    path('api/v1/pilots', registryviews.PilotList),
+    path('api/v1/pilots/<uuid:pk>', registryviews.PilotDetail),
+    path('api/v1/pilots/<uuid:pk>/privilaged', registryviews.PilotDetailPrivilaged),
+    # url(r'^', include('auth0authorization.urls'))
     
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

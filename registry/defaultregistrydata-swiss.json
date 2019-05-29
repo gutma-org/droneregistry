@@ -52,46 +52,15 @@
       "address_line_3": "",
       "postcode": "97201",
       "city": "Portland",
-      "country": "USA",
+      "country": "US",
       "created_at": "2018-09-04T13:20:30+01:00",
       "updated_at": "2018-09-04T13:20:30+01:00"
 
    }
 },
-
 {
    "model": "registry.address",
-   "pk": "ff9f7e55-df12-4b6d-81ce-29e0cd5df8d1",
-   "fields": {
-      "address_line_1": "Suite 206, Los Angeles",
-      "address_line_2": "",
-      "address_line_3": "",
-      "postcode": "90401",
-      "city": "California",
-      "country": "USA",
-      "created_at": "2018-09-04T13:20:30+01:00",
-      "updated_at": "2018-09-04T13:20:30+01:00"
-   }
-},
 
-{
-   "model": "registry.address",
-   "pk": "442dc981-00ec-41da-a5b1-98983bd7a39b",
-   "fields": {
-      "address_line_1": "4515 Taylor Circle",
-      "address_line_2": "",
-      "address_line_3": "",
-      "postcode": "55811",
-      "city": "Duluth",
-      "country": "USA",
-      "created_at": "2018-09-04T13:20:30+01:00",
-      "updated_at": "2018-09-04T13:20:30+01:00"
-   }
-},
-
-
-{
-   "model": "registry.address",
    "pk": "72d03da4-a7fb-40f8-a383-f34c1db1c0b0",
    "fields": {
       "address_line_1": "3571 NW YEON AVE",
@@ -99,24 +68,25 @@
       "address_line_3": "",
       "postcode": "97210",
       "city": "Portland",
-      "country": "USA",
+      "country": "US",
       "created_at": "2018-09-04T13:20:30+01:00",
       "updated_at": "2018-09-04T13:20:30+01:00"
    }
 },
+
+
 {
    "model": "registry.operator",
    "pk": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
    "fields": {
       "company_name": "WHISKEY TANGO FOX LLC",
-      "website": "dronephotography.com",
-      "phone_number":"+17221816880",
-      "email": "wtfllc@gmail.com",
+      "website": "august.com",
+      "phone_number":"+497221816880",
+      "email": "aj@august.com",
       "operator_type": "0",
       "address": "8ddda026-2995-44ef-9eab-55e396eaef0d",
-      "vat_number": "",
-      "country":"USA",
-      "company_number": "1312138-94",
+      "vat_number": "IE5895475T",
+      "company_number": "489434",
       "operational_authorizations": [
          "e7bfa98c-8e4f-40bd-b42f-62fd3651d7da"
       ],
@@ -128,6 +98,7 @@
       "updated_at": "2018-09-04T13:20:30+01:00"
    }
 },
+
 {
    "model": "registry.person",
    "pk": "e61a74c8-7aa4-4dd3-82ba-11b174a44870",
@@ -157,13 +128,14 @@
    }
 
 },
+
 {
    "model": "registry.contact",
    "pk": "a7646ce2-f7df-48a9-9ff8-98dfd04794be",
    "fields": {
       "operator": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
-      "person": "a2f3b8b2-183d-44df-9254-83aca26d01c0",
-      "address": "72d03da4-a7fb-40f8-a383-f34c1db1c0b0",
+      "person": "e61a74c8-7aa4-4dd3-82ba-11b174a44870",
+      "address": "a7646ce2-f7df-48a9-9ff8-98dfd04794be",
       "role_type": "0",
       "created_at": "2018-09-04T13:20:30+01:00",
       "updated_at": "2018-09-04T13:20:30+01:00"
@@ -175,33 +147,31 @@
    "pk": "75f358c6-e8d3-46aa-a3de-172bdcea469d",
    "fields": {
       "type_certificate_id": "1dc42b2a-7e3f-4e87-b23d-353ec8a06705",
-      "type_certificate_issuing_country": "USA",
-      "type_certificate_holder": "Whiskey Tango Fox LLC",
-      "type_certificate_holder_country": "USA"
+      "type_certificate_issuing_country": "IRE",
+      "type_certificate_holder": "Agro Products Inc.",
+      "type_certificate_holder_country": "IRE"
+   }
+},
+{
+   "model": "registry.manufacturer",
+   "pk": "6f9cd973-15b9-4066-b4d0-1e8bbd0f279d",
+   "fields": {
+      "full_name": "DJI Holdings Inc",
+      "common_name": "DJI",
+      "acronym": "DJI",
+      "role": "Manufacturer",
+      "country": "IRE"
    }
 },
 {
    "model": "registry.manufacturer",
    "pk": "4effcea2-e9d4-4696-891f-52d350d68a9f",
    "fields": {
-      "full_name": "DJI Holdings Inc",
-      "common_name": "DJI",
-      "acronym": "DJI",
+      "full_name": "Sensefly Drones Inc",
+      "common_name": "Sensefly",
+      "acronym": "SF",
       "role": "Manufacturer",
-      "country": "USA",
-      "address":"ff9f7e55-df12-4b6d-81ce-29e0cd5df8d1"
-   }
-},
-{
-   "model": "registry.manufacturer",
-   "pk": "6f9cd973-15b9-4066-b4d0-1e8bbd0f279d",   
-   "fields": {
-      "full_name": "Cirrus Design Corporation (United States)",
-      "common_name": "Cirrus",
-      "acronym": "CA",
-      "role": "Manufacturer",
-      "country": "USA",      
-      "address":"442dc981-00ec-41da-a5b1-98983bd7a39b"
+      "country": "IRE"
    }
 },
 {
@@ -210,42 +180,37 @@
    "fields": {
       "operator": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
       "type_certificate": "75f358c6-e8d3-46aa-a3de-172bdcea469d",
-      "mass": "1633",
+      "mass": "300",
       "manufacturer": "6f9cd973-15b9-4066-b4d0-1e8bbd0f279d",
-      "make": "Cirrus SR22",
-      "popular_name": "Cirrus SR22",
-      "model": "Cirrus",
-      "series":"G2",
-      "registration_mark":"N425JA",
+      "make": "Series 2",
+      "popular_name": "Parrot 2",
+      "model": "Parrot",
       "category": 1,
-      "sub_category": 1,
+      "sub_category": 7,
       "is_airworthy": 1,
-      "icao_aircraft_type_designator": "SR22",
+      "icao_aircraft_type_designator": "HS20",
       "esn": "4D4652310000000000000000313233343436373839414243",
-      "maci_number": "",
-      "begin_date": "2018-05-01T12:12:30+01:00",
-      "created_at": "2019-05-04T13:20:30+01:00",
-      "updated_at": "2019-05-04T13:20:30+01:00"
+      "maci_number": "86ac-42dc-8d19",
+      "created_at": "2018-09-04T13:20:30+01:00",
+      "updated_at": "2018-09-04T13:20:30+01:00"
    }
 },
 {
    "model": "registry.aircraft",
    "pk": "0450852f-856e-4ecb-beb6-01ccded8529d",
    "fields": {
-      "operator": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
+      "operator": "566d63bb-cb1c-42dc-9a51-baef0d0a8d04",
       "type_certificate": "75f358c6-e8d3-46aa-a3de-172bdcea469d",
       "mass": "700",
-      "make": "Mavic 2",
-      "popular_name": "DJI Mavic 2",
+      "make": "Series 1",
       "manufacturer": "4effcea2-e9d4-4696-891f-52d350d68a9f",
-      "model": "Mavic 2 Zoom",
+      "model": "eBee",
       "category": 1,
       "sub_category": 7,
       "is_airworthy": 1,
       "icao_aircraft_type_designator": "STRM",
       "esn": "5G6532640000000000000000823050083171098833641055",
       "maci_number": "eb30-4fb4-b12d",
-      "begin_date": "2019-01-01T12:12:30+01:00",
       "created_at": "2018-09-04T13:20:30+01:00",
       "updated_at": "2018-09-04T13:20:30+01:00"
    }
@@ -255,7 +220,7 @@
    "pk": "da7dae8f-3fea-46b6-9076-fe3735817de9",
    "fields": {
       "test_type": 1,
-      "name": "Part 107 Aeronautical knowledge test",
+      "name": "RPAS Safety Basics",
       "created_at": "2018-09-04T13:20:30+01:00",
       "updated_at": "2018-09-04T13:20:30+01:00"
    }
@@ -270,42 +235,16 @@
       "updated_at": "2018-09-04T13:20:30+01:00"
    }
 },
-
 {
    "model": "registry.pilot",
    "pk": "d4b8aa2c-0a52-4adc-806a-f363deb6a1e0",
    "fields": {
-      "operator": "41174c3f-e86c-4e5a-a629-32d4d9da6011",
+      "operator": "566d63bb-cb1c-42dc-9a51-baef0d0a8d04",
       "is_active": 1,
-      "person": "e61a74c8-7aa4-4dd3-82ba-11b174a44870",
-      "address": "8ddda026-2995-44ef-9eab-55e396eaef0d",
-      "tests": [
-         "ad7a73e4-9d11-4d6f-9e4c-36013fc4ac70",
-         "da7dae8f-3fea-46b6-9076-fe3735817de9"
-      ],
+      "person": "32153c3b-663b-41e4-afc2-47127a713704",
+      "address": "28b2f84c-6798-49b9-9114-97d1d14f49f2",
       "created_at": "2018-09-04T13:20:30+01:00",
       "updated_at": "2018-09-04T13:20:30+01:00"
    }
 },
-
-{
-   "model": "registry.testvalidity",
-   "pk": "51d01214-933a-4069-a880-a865e774d674",
-   "fields": {
-      "pilot": "d4b8aa2c-0a52-4adc-806a-f363deb6a1e0",
-      "test":"ad7a73e4-9d11-4d6f-9e4c-36013fc4ac70",
-      "taken_at": "2018-09-04T13:20:30+01:00",
-      "expiration": "2020-09-04T13:20:30+01:00"
-   }
-},
-{
-   "model": "registry.testvalidity",
-   "pk": "04c391b7-be2a-41a9-a0c2-da9b8e53ab81",
-   "fields": {
-      "pilot": "d4b8aa2c-0a52-4adc-806a-f363deb6a1e0",
-      "test":"da7dae8f-3fea-46b6-9076-fe3735817de9",
-      "taken_at": "2018-09-04T13:20:30+01:00",
-      "expiration": "2020-09-04T13:20:30+01:00"
-   }
-}
 ]  
