@@ -64,31 +64,27 @@
 				</div>
 				<div class="row">
 					
-					<table>		
+					<table id="certification-table">		
 						
 							<thead>
 									<tr>
 										<th>Certification</th>
-										<th>Validity</th>
+										<th>Test Type</th>
+										<th>Taken at</th>
+										<th>Expiration</th>
 										<th>&nbsp;</th>							
 									</tr>
 								</thead>									
 						<tbody>
 							
 							<tr>
-								<td></td>
-								<td><p class="linear-background" id="pilot-certification">&nbsp;</p></td>		
+								<td><p class="linear-background" id="">&nbsp;</p></td>
+								<td><p class="linear-background" id="">&nbsp;</p></td>	
+								<td><p class="linear-background" id="">&nbsp;</p></td>	
+								<td><p class="linear-background" id="">&nbsp;</p></td>		
 								<td><a href="#">details</a></td>						
 							</tr>			
-							<tr>
-								<td>Tests</td>
-								<td><p class="linear-background" id="pilot-tests">&nbsp;</p></td>	<td><a href="#">details</a></td>						
-							</tr>			
-							<tr>
-								<td>Test Validity</td>
-								<td>27 casec</td>				<td><a href="#">details</a></td>	
-							</tr>					
-						
+							
 						</tbody>
 					</table>
 				</div>
@@ -156,7 +152,7 @@
 		}
 
 		function render_returned_pilot_details(data){
-			console.log(data);
+			
 			var animated_divs = document.getElementsByClassName("linear-background");
 			while (animated_divs.length){
 				animated_divs[0].className = animated_divs[0].className.replace(/\linear-background\b/g, "");
@@ -169,6 +165,29 @@
 			$("#pilot-country").html(data['address']['country']);
 			$("#pilot-updated-at").html(data["updated_at"]);
 			$("#pilot-created-at").html(data["created_at"]);
+
+			var tests = data['tests'];
+			
+			$("#certification-table tbody tr").remove();
+			for (let certification_index = 0; certification_index < tests.length; certification_index++) {
+			const current_certification = tests[certification_index];
+
+			var certification_row = $("<tr/>").appendTo($('#certification-table').find('tbody'));
+			
+			var certification_name_td = $("<td/>").html(current_certification['test_details']['name']).appendTo(certification_row);
+
+			var certification_test_type_td = $("<td/>").html(current_certification['test_details']['test_type']).appendTo(certification_row);
+
+			
+			var certification_taken_at_td = $("<td/>").html(current_certification['test_details']['taken_at']).appendTo(certification_row);
+				
+						
+			var certification_validity_td = $("<td/>").html(current_certification['expiration']).appendTo(certification_row);
+				
+			
+			var certification_details_td = $("<td/>").html('<a href="#">details</a>').appendTo(certification_row);
+			}
+			
 	}
 </script>
 </html>
