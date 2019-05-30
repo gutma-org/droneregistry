@@ -43,7 +43,7 @@ urlpatterns = [
     path('api/v1/contacts/<uuid:pk>/privilaged', registryviews.ContactDetailPrivilaged),
     path('api/v1/operators/<uuid:pk>/aircraft', registryviews.OperatorAircraft),
     path('api/v1/pilots', registryviews.PilotList),
-    path('api/v1/pilots/<uuid:pk>', registryviews.PilotDetail),
+    path('api/v1/pilots/<uuid:pk>', registryviews.PilotDetail.as_view()),
     path('api/v1/pilots/<uuid:pk>/gutma-demo', registryviews.GutmaDemoPilotDetail.as_view()),
     path('api/v1/pilots/<uuid:pk>/privilaged', registryviews.PilotDetailPrivilaged),
     # url(r'^', include('auth0authorization.urls'))

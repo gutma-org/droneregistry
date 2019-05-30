@@ -18,7 +18,6 @@
 	<body>
 
 		<main class="wrapper">
-
 			<nav class="navigation">
 				<section class="container">
 					<a class="navigation-title" href="https://github.com/gutma-org/droneregistry">&nbsp;
@@ -177,13 +176,10 @@
 			var certification_name_td = $("<td/>").html(current_certification['test_details']['name']).appendTo(certification_row);
 
 			var certification_test_type_td = $("<td/>").html(current_certification['test_details']['test_type']).appendTo(certification_row);
-
 			
-			var certification_taken_at_td = $("<td/>").html(current_certification['test_details']['taken_at']).appendTo(certification_row);
-				
+			var certification_taken_at_td = $("<td/>").html(current_certification['test_details']['taken_at']).appendTo(certification_row);				
 						
-			var certification_validity_td = $("<td/>").html(current_certification['expiration']).appendTo(certification_row);
-				
+			var certification_validity_td = $("<td/>").html(current_certification['expiration']).appendTo(certification_row);				
 			
 			var certification_details_td = $("<td/>").html('<a href="#">details</a>').appendTo(certification_row);
 			}

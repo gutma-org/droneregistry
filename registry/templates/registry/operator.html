@@ -291,7 +291,7 @@
 			
 			var equipment_row = $("<tr/>").appendTo($('#equipment-table').find('tbody'));
 			
-			var equipment_image_td = $("<td/>").html('<div class="pilot-photo"><img src="https://via.placeholder.com/60x60?Text=Aircraft Photo"></div>').appendTo(equipment_row);
+			var equipment_image_td = $("<td/>").html("<div class='equipment-photo'><img src='"+aircraft['image_small']+"'>" +'</div>').appendTo(equipment_row);
 
 			var equipment_details_td  = $("<td/>").html(aircraft['popular_name'] + '<br>'+aircraft['category'] + '<br>'+aircraft['sub_category'] + '<br>').appendTo(equipment_row);
 						

@@ -43,8 +43,8 @@
 				<div class="row">
 					<div class="column">		
 					<h4>Image</h4>
-					
-					<img src="https://via.placeholder.com/100x100?Text=Drone Photo">
+					<div id="equipment-photo">
+					<img id="" src="https://via.placeholder.com/100x100?Text=Drone Photo"></div>
 					</div>
 
 				</div>
@@ -173,6 +173,9 @@
 		while (animated_divs.length){
 			animated_divs[0].className = animated_divs[0].className.replace(/\linear-background\b/g, "");
 		}
+
+		$("#equipment-photo").html("<img class='image_large' src='"+data['image']+ "'>");
+
 		var registration_mark = (data['registration_mark'])? data['registration_mark']: "NA";
 		var series = (data['series'])? data['series']: "NA";
 		$("#equipment-aircraft-type-designator").html(data['icao_aircraft_type_designator']);

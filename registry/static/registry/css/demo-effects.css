@@ -23,3 +23,7 @@
 .no-bullet-list {
     list-style-type: none;
 }
+
+.image_large {
+    max-height: 100px;
+}

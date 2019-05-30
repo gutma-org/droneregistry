@@ -203,6 +203,8 @@ class Aircraft(models.Model):
     esn = models.CharField(max_length = 48, default='000000000000000000000000000000000000000000000000')
     maci_number = models.CharField(max_length = 280)
     status = models.IntegerField(choices=STATUS_CHOICES, default = 1)
+    image = models.URLField(blank=True, null=True)
+    image_small = models.URLField(blank=True, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
