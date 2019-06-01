@@ -52,7 +52,7 @@
       "address_line_3": "",
       "postcode": "97201",
       "city": "Portland",
-      "country": "USA",
+      "country": "US",
       "created_at": "2018-09-04T13:20:30+01:00",
       "updated_at": "2018-09-04T13:20:30+01:00"
 
@@ -68,7 +68,7 @@
       "address_line_3": "",
       "postcode": "90401",
       "city": "California",
-      "country": "USA",
+      "country": "US",
       "created_at": "2018-09-04T13:20:30+01:00",
       "updated_at": "2018-09-04T13:20:30+01:00"
    }
@@ -83,7 +83,7 @@
       "address_line_3": "",
       "postcode": "55811",
       "city": "Duluth",
-      "country": "USA",
+      "country": "US",
       "created_at": "2018-09-04T13:20:30+01:00",
       "updated_at": "2018-09-04T13:20:30+01:00"
    }
@@ -99,7 +99,7 @@
       "address_line_3": "",
       "postcode": "97210",
       "city": "Portland",
-      "country": "USA",
+      "country": "US",
       "created_at": "2018-09-04T13:20:30+01:00",
       "updated_at": "2018-09-04T13:20:30+01:00"
    }
@@ -115,7 +115,7 @@
       "operator_type": "0",
       "address": "8ddda026-2995-44ef-9eab-55e396eaef0d",
       "vat_number": "",
-      "country":"USA",
+      "country":"US",
       "company_number": "1312138-94",
       "operational_authorizations": [
          "e7bfa98c-8e4f-40bd-b42f-62fd3651d7da"
@@ -188,7 +188,7 @@
       "common_name": "DJI",
       "acronym": "DJI",
       "role": "Manufacturer",
-      "country": "USA",
+      "country": "US",
       "address":"ff9f7e55-df12-4b6d-81ce-29e0cd5df8d1"
    }
 },
@@ -200,7 +200,7 @@
       "common_name": "Cirrus",
       "acronym": "CA",
       "role": "Manufacturer",
-      "country": "USA",      
+      "country": "US",      
       "address":"442dc981-00ec-41da-a5b1-98983bd7a39b"
    }
 },
